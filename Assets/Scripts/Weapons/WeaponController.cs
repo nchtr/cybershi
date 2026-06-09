@@ -22,7 +22,6 @@ namespace Cybershi
         [Tooltip("Фракция владельца. Для игрока — Player.")]
         public Faction ownerFaction = Faction.Player;
 
-        public KeyCode fireKey = KeyCode.Mouse0;
         public bool allowScrollSwitch = true;
 
         private PlayerAiming _aiming;
@@ -46,7 +45,8 @@ namespace Cybershi
             var weapon = Current;
             if (weapon == null) return;
 
-            bool firing = weapon.automatic ? Input.GetKey(fireKey) : Input.GetKeyDown(fireKey);
+            var input = InputReader.Instance;
+            bool firing = weapon.automatic ? input.FireHeld : input.FirePressed;
             if (firing && _cooldown <= 0f)
             {
                 Fire(weapon);
@@ -56,10 +56,12 @@ namespace Cybershi
 
         private void HandleSwitching()
         {
+            var input = InputReader.Instance;
+
             // Цифры 1..9
             for (int i = 0; i < weapons.Count && i < 9; i++)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+                if (input.WeaponSlotPressed(i))
                 {
                     Select(i);
                     return;
@@ -68,9 +70,9 @@ namespace Cybershi
 
             if (allowScrollSwitch)
             {
-                float scroll = Input.mouseScrollDelta.y;
-                if (scroll > 0.01f) Select((_index + 1) % Mathf.Max(1, weapons.Count));
-                else if (scroll < -0.01f) Select((_index - 1 + weapons.Count) % Mathf.Max(1, weapons.Count));
+                int cycle = input.WeaponCycle;
+                if (cycle > 0) Select((_index + 1) % Mathf.Max(1, weapons.Count));
+                else if (cycle < 0) Select((_index - 1 + weapons.Count) % Mathf.Max(1, weapons.Count));
             }
         }
 

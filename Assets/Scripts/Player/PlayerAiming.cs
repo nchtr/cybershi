@@ -40,7 +40,7 @@ namespace Cybershi
             bool is3D = PerspectiveManager.Instance != null &&
                         PerspectiveManager.Instance.CurrentMode == PerspectiveMode.ThreeD;
 
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(InputReader.Instance.PointerPosition);
             Vector3 origin = firePoint != null ? firePoint.position : transform.position;
 
             Plane plane = is3D

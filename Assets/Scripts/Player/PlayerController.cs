@@ -69,11 +69,8 @@ namespace Cybershi
         [Tooltip("Сила прыжка-отскока, если нажать прыжок сразу после слэма.")]
         public float slamJumpBoost = 6f;
 
-        [Header("Управление (клавиши)")]
-        public KeyCode jumpKey = KeyCode.Space;
-        public KeyCode dashKey = KeyCode.LeftShift;
-        [Tooltip("На земле — подкат, в воздухе — граунд-слэм.")]
-        public KeyCode slideSlamKey = KeyCode.LeftControl;
+        // Управление читается централизованно через InputReader (новая Input System):
+        // Space — прыжок, Shift — рывок, Ctrl — подкат/слэм, WASD — движение.
 
         [Header("Ссылки")]
         [Tooltip("Объект Visual со SpriteRenderer/SpriteAnimator для отражения по направлению.")]
@@ -97,6 +94,8 @@ namespace Cybershi
         private float _coyoteTimer;
         private float _jumpBufferTimer;
         private float _wallJumpLockTimer;
+        private float _wallCoyoteTimer;
+        private int _lastWallDir;
         private float _dashTimer;
         private float _dashChargeTimer;
         private int _dashCharges;
@@ -117,6 +116,9 @@ namespace Cybershi
         public bool IsGrounded => _grounded;
         public int FacingSign => _facing;
         public Vector3 Velocity => _rb != null ? _rb.linearVelocity : Vector3.zero;
+        public int DashCharges => _dashCharges;
+        public int MaxDashCharges => maxDashCharges;
+        public Health Health => _health;
 
         private void Awake()
         {
@@ -148,11 +150,12 @@ namespace Cybershi
         private void Update()
         {
             // Латаем разовые нажатия, чтобы не потерять их между кадрами физики.
-            if (Input.GetKeyDown(jumpKey)) { _jumpQueued = true; _jumpBufferTimer = jumpBuffer; }
-            _jumpHeld = Input.GetKey(jumpKey);
-            if (Input.GetKeyDown(dashKey)) _dashQueued = true;
-            if (Input.GetKeyDown(slideSlamKey)) _slideSlamQueued = true;
-            _slideSlamHeld = Input.GetKey(slideSlamKey);
+            var input = InputReader.Instance;
+            if (input.JumpPressed) { _jumpQueued = true; _jumpBufferTimer = jumpBuffer; }
+            _jumpHeld = input.JumpHeld;
+            if (input.DashPressed) _dashQueued = true;
+            if (input.SlideSlamPressed) _slideSlamQueued = true;
+            _slideSlamHeld = input.SlideSlamHeld;
 
             UpdateFacing();
         }
@@ -191,8 +194,8 @@ namespace Cybershi
 
         // ---------------------------------------------------------------- ввод/направления
 
-        private float InputH => Input.GetAxisRaw("Horizontal");
-        private float InputV => Input.GetAxisRaw("Vertical");
+        private float InputH => InputReader.Instance.Move.x;
+        private float InputV => InputReader.Instance.Move.y;
 
         /// <summary>Желаемое направление движения в горизонтальной плоскости (мир), длина 0..1.</summary>
         private Vector3 WishDir()
@@ -286,11 +289,26 @@ namespace Cybershi
             if (!Is2D || _grounded) return;
 
             Vector3 center = transform.position + _col.center;
+            float reach = _col.radius + wallCheckDistance;
 
-            if (RayHitsEnvironment(center + Vector3.right * (_col.radius), Vector3.right, wallCheckDistance + 0.02f))
-                _wallDir = 1;
-            else if (RayHitsEnvironment(center + Vector3.left * (_col.radius), Vector3.left, wallCheckDistance + 0.02f))
-                _wallDir = -1;
+            // Луч пускаем из ЦЕНТРА капсулы, а не от её края. Если стартовать от края, то при
+            // плотном прижатии к стене начало луча оказывается ВНУТРИ коллайдера стены, и
+            // Physics.Raycast его не регистрирует — из-за этого прыжок от стены раньше
+            // срабатывал только с одной стороны. Из центра обе стороны детектятся одинаково.
+            bool wallRight = RayHitsEnvironment(center, Vector3.right, reach);
+            bool wallLeft = RayHitsEnvironment(center, Vector3.left, reach);
+
+            if (wallRight && wallLeft)
+                _wallDir = InputH > 0.01f ? 1 : (InputH < -0.01f ? -1 : _facing); // в узком коридоре — по вводу/взгляду
+            else if (wallRight) _wallDir = 1;
+            else if (wallLeft) _wallDir = -1;
+
+            // Койот-тайм для стен: можно отпрыгнуть ещё мгновение после отрыва.
+            if (_wallDir != 0)
+            {
+                _wallCoyoteTimer = coyoteTime;
+                _lastWallDir = _wallDir;
+            }
         }
 
         private bool RayHitsEnvironment(Vector3 origin, Vector3 dir, float dist)
@@ -310,6 +328,7 @@ namespace Cybershi
             _coyoteTimer = _grounded ? coyoteTime : _coyoteTimer - dt;
             if (_jumpBufferTimer > 0f) _jumpBufferTimer -= dt;
             if (_wallJumpLockTimer > 0f) _wallJumpLockTimer -= dt;
+            if (_wallCoyoteTimer > 0f) _wallCoyoteTimer -= dt;
 
             // Перезарядка зарядов рывка.
             if (_dashCharges < maxDashCharges)
@@ -374,11 +393,14 @@ namespace Cybershi
                     _jumpBufferTimer = 0f;
                     Sfx(SoundId.PlayerJump);
                 }
-                else if (_wallDir != 0)
+                else if (_wallDir != 0 || _wallCoyoteTimer > 0f)
                 {
-                    horiz = new Vector3(-_wallDir * wallJumpForce.x, 0f, horiz.z);
+                    int wd = _wallDir != 0 ? _wallDir : _lastWallDir;
+                    // Отталкивание ВСЕГДА от стены: wd=+1 (стена справа) → толкаем влево, и наоборот.
+                    horiz = new Vector3(-wd * wallJumpForce.x, 0f, horiz.z);
                     vUp = wallJumpForce.y;
                     _wallJumpLockTimer = wallJumpLockTime;
+                    _wallCoyoteTimer = 0f;
                     _jumpBufferTimer = 0f;
                     Sfx(SoundId.PlayerWallJump);
                 }
@@ -388,9 +410,10 @@ namespace Cybershi
             if (!_jumpHeld && vUp > 0f)
                 vUp *= jumpCutMultiplier;
 
-            // Гравитация + скольжение по стене
+            // Гравитация + скольжение по стене (симметрично с обеих сторон).
             vUp = ApplyGravity(vUp, dt);
-            if (_wallDir != 0 && vUp < -wallSlideSpeed && Mathf.Sign(WishDir().x) == _wallDir)
+            bool pressingIntoWall = _wallDir != 0 && Mathf.Abs(InputH) > 0.1f && (int)Mathf.Sign(InputH) == _wallDir;
+            if (pressingIntoWall && vUp < -wallSlideSpeed)
                 vUp = -wallSlideSpeed;
 
             return new Vector3(horiz.x, vUp, horiz.z);
