@@ -41,7 +41,7 @@ namespace Cybershi
 
         public static void EnsureEventSystem()
         {
-            if (Object.FindObjectOfType<EventSystem>() != null) return;
+            if (Object.FindFirstObjectByType<EventSystem>() != null) return;
 
             // Создаём выключенным, настраиваем модуль ввода, и только потом включаем —
             // чтобы у InputSystemUIInputModule к моменту OnEnable уже были назначены действия,
@@ -90,7 +90,7 @@ namespace Cybershi
             var go = NewUI("Image", parent);
             var img = go.AddComponent<Image>();
             img.sprite = PlaceholderFactory.Square; // гарантирует сплошной прямоугольник
-            img.type = Image.Type.Simple;
+            img.type = UnityEngine.UI.Image.Type.Simple;
             img.color = color;
             return img;
         }
@@ -115,7 +115,7 @@ namespace Cybershi
             var go = NewUI("Button", parent);
             var img = go.AddComponent<Image>();
             img.sprite = PlaceholderFactory.Square;
-            img.type = Image.Type.Simple;
+            img.type = UnityEngine.UI.Image.Type.Simple;
             img.color = new Color(0.15f, 0.17f, 0.22f, 1f);
 
             var btn = go.AddComponent<Button>();
@@ -168,7 +168,7 @@ namespace Cybershi
             slider.fillRect = fillRt;
             slider.handleRect = hRt;
             slider.targetGraphic = handle;
-            slider.direction = Slider.Direction.LeftToRight;
+            slider.direction = UnityEngine.UI.Slider.Direction.LeftToRight;
             slider.minValue = min;
             slider.maxValue = max;
             slider.value = value;
@@ -211,9 +211,9 @@ namespace Cybershi
 
             var fill = Image(bg.transform, fillColor);
             Stretch((RectTransform)fill.transform, Vector2.zero, Vector2.one);
-            fill.type = Image.Type.Filled;
-            fill.fillMethod = Image.FillMethod.Horizontal;
-            fill.fillOrigin = (int)Image.OriginHorizontal.Left;
+            fill.type = UnityEngine.UI.Image.Type.Filled;
+            fill.fillMethod = UnityEngine.UI.Image.FillMethod.Horizontal;
+            fill.fillOrigin = (int)UnityEngine.UI.Image.OriginHorizontal.Left;
             fill.fillAmount = 1f;
             return fill;
         }
