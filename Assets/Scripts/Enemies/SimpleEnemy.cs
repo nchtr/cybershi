@@ -85,7 +85,7 @@ namespace Cybershi
         private void FixedUpdate()
         {
             var player = Player;
-            if (player == null || !_aggro) { _rb.velocity = Vector3.Lerp(_rb.velocity, Vector3.zero, 0.1f); return; }
+            if (player == null || !_aggro) { _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, Vector3.zero, 0.1f); return; }
 
             // Держим предпочтительную дистанцию: цель — точка на окружности вокруг игрока.
             Vector3 fromPlayer = transform.position - player.position;
@@ -101,7 +101,7 @@ namespace Cybershi
             Vector3 toAnchor = anchor - transform.position;
             toAnchor.z = 0f;
             Vector3 desired = Vector3.ClampMagnitude(toAnchor, 1f) * moveSpeed;
-            _rb.velocity = Vector3.Lerp(_rb.velocity, desired, 0.15f);
+            _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, desired, 0.15f);
         }
 
         private void SetAggro(bool value)

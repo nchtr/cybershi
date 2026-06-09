@@ -116,7 +116,7 @@ namespace Cybershi
 
         public bool IsGrounded => _grounded;
         public int FacingSign => _facing;
-        public Vector3 Velocity => _rb != null ? _rb.velocity : Vector3.zero;
+        public Vector3 Velocity => _rb != null ? _rb.linearVelocity : Vector3.zero;
 
         private void Awake()
         {
@@ -166,7 +166,7 @@ namespace Cybershi
             WallCheck();
             Timers(dt);
 
-            Vector3 vel = _rb.velocity;
+            Vector3 vel = _rb.linearVelocity;
 
             switch (_state)
             {
@@ -176,7 +176,7 @@ namespace Cybershi
                 case MoveState.GroundSlamming: vel = TickSlam(vel, dt); break;
             }
 
-            _rb.velocity = vel;
+            _rb.linearVelocity = vel;
 
             // Звук приземления
             if (_grounded && !_wasGrounded && _state != MoveState.GroundSlamming)
@@ -487,7 +487,7 @@ namespace Cybershi
             _col.center = _defaultColCenter - Vector3.up * (_defaultColHeight - _col.height) * 0.5f;
             Sfx(SoundId.PlayerSlide);
 
-            float vUp = Mathf.Min(0f, _rb.velocity.y);
+            float vUp = Mathf.Min(0f, _rb.linearVelocity.y);
             return dir * slideSpeed + Vector3.up * vUp;
         }
 
