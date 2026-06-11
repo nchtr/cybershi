@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3638282aa72dd18448ccf862d45dde35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.PongBall
-  damagePerSpeed: 1.1
+  damagePerSpeed: 0.9
   playerDamageFactor: 0.5
-  baseLife: 4
-  refSpeed: 16
-  bounceKeep: 0.88
+  baseLife: 4.5
+  refSpeed: 22
+  bounceKeep: 0.92
   minLife: 0.8
   maxLife: 9
   collisionMask:

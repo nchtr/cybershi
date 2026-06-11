@@ -13,7 +13,7 @@
 2. Package Manager → установите **Input System**; Project Settings → Player → **Active Input Handling = Both**
    (Unity попросит перезапуск — согласитесь).
 3. Скопируйте папку `Assets/` в Unity-проект.
-4. Меню Unity: **Cybershi → Build Game (Menu + Arena)** → откроется `MainMenu` → **Play** → «Играть».
+4. Откройте `Assets/Scenes/MainMenu.unity` → **Play** → «Играть» (сцены уже готовы и прописаны в Build Settings).
 
 Управление: **WASD** — движение, **мышь** — прицел, **ЛКМ** — огонь, **ПКМ** — альт-огонь,
 **Shift** — рывок (парирует), **Ctrl** — подкат/слэм, **Space** — прыжок, **1-4** — оружие,

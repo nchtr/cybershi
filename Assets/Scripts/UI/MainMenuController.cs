@@ -71,7 +71,7 @@ namespace Cybershi
                 SceneManager.LoadScene(gameSceneName);
             else
                 Debug.LogError($"Cybershi: сцена '{gameSceneName}' не найдена в Build Settings. " +
-                               "Добавьте её (File → Build Settings) или запустите Cybershi → Build Game.");
+                               "Добавьте Assets/Scenes/SampleArena.unity в File → Build Settings.");
         }
 
         private void OpenSettings() => _settings.SetVisible(true);

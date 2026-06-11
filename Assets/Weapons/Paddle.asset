@@ -30,7 +30,7 @@ MonoBehaviour:
   powerShotDamageMult: 3
   meleeRange: 2.6
   meleeCanParry: 1
-  meleeBallImpulse: 14
+  meleeBallImpulse: 18
   maxAmmo: 0
   ammoPerShot: 1
   ammoRegenPerSecond: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   altFire: 4
   altFirePrefab: {fileID: 661955628403333034, guid: 37a416af21f0e9747bdecee82b2ec3a6, type: 3}
   altFireCooldown: 1.2
-  altFireLaunchSpeed: 16
+  altFireLaunchSpeed: 24
   pumpMaxSafe: 3
   pumpExplosionDamage: 45
   pumpExplosionRadius: 5

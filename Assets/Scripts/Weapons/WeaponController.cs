@@ -261,7 +261,7 @@ namespace Cybershi
                 var col = _scanHits[i].collider;
                 if (col.transform.IsChildOf(transform)) continue;
 
-                // Монетка: рикошет с автонаводкой и доп. уроном.
+                // Монетка: запуск цепочки рикошетов (монетка → монетка → … → цель/сплит).
                 if (allowRicochet)
                 {
                     var coin = col.GetComponent<Coin>();
@@ -269,16 +269,7 @@ namespace Cybershi
                     {
                         end = _scanHits[i].point;
                         SpawnTracer(w, origin, end);
-                        Vector3 coinPos = coin.transform.position;
-                        float mult = coin.ricochetDamageMult;
-                        var target = coin.Ricochet();
-                        if (AudioManager.Instance != null) AudioManager.Instance.Play(SoundId.Ricochet, coinPos);
-                        if (target != null)
-                        {
-                            Vector3 toTarget = (target.transform.position - coinPos).normalized;
-                            // Рикошет — новый луч от монетки к цели (может пробить и её монетки дальше).
-                            HitscanRay(w, coinPos, toTarget, 60f, damage * mult, pierce, allowRicochet: true);
-                        }
+                        RicochetChain(w, coin, damage, pierce);
                         return;
                     }
                     if (col.isTrigger) continue; // прочие триггеры игнорируем
@@ -315,6 +306,68 @@ namespace Cybershi
             }
 
             SpawnTracer(w, origin, end);
+        }
+
+        /// <summary>
+        /// Цепочка рикошетов через монетки. Луч прыгает с монетки на ближайшую другую в радиусе
+        /// её chainRadius, ПЕРЕМНОЖАЯ множители урона за каждое звено. С последней монетки:
+        ///  • если в цепи была хотя бы одна СОЗРЕВШАЯ (провисевшая ≥ splitAge) — выстрел
+        ///    РАЗДЕЛЯЕТСЯ на лучи по нескольким приоритетным целям (доля урона за луч);
+        ///  • иначе — одиночный луч в приоритетную цель.
+        /// </summary>
+        private void RicochetChain(WeaponDefinition w, Coin first, float damage, bool pierce)
+        {
+            // Параметры сплита берём с первой монетки (все из одного префаба).
+            int splitTargets = Mathf.Max(1, first.splitTargets);
+            float splitFactor = first.splitDamageFactor;
+            float searchRadius = first.ricochetSearchRadius;
+
+            float dmg = damage;
+            bool anyRipe = false;
+            Coin current = first;
+            Vector3 lastPos = first.transform.position;
+
+            int safety = 16; // страховка от вырожденных циклов
+            while (current != null && safety-- > 0)
+            {
+                dmg *= current.ricochetDamageMult;      // суммируем прибавку за звено
+                anyRipe |= current.IsRipe;
+                lastPos = current.transform.position;
+                float chainR = current.chainRadius;
+                current.Consume();                       // выводит монетку из Active
+
+                if (AudioManager.Instance != null) AudioManager.Instance.Play(SoundId.Ricochet, lastPos);
+
+                var next = Coin.FindNearest(lastPos, chainR);
+                if (next != null)
+                    SpawnTracer(w, lastPos, next.transform.position);
+                current = next;
+            }
+
+            // Терминал: огонь с последней монетки.
+            if (anyRipe && splitTargets > 1)
+            {
+                var targets = ParryUtility.FindPriorityEnemies(lastPos, searchRadius, splitTargets);
+                if (targets.Count > 0)
+                {
+                    foreach (var t in targets)
+                    {
+                        Vector3 dir = (t.transform.position - lastPos).normalized;
+                        HitscanRay(w, lastPos, dir, 60f, dmg * splitFactor, pierce, allowRicochet: false);
+                    }
+                    CameraController.Shake(0.2f);
+                    if (StyleSystem.Instance != null)
+                        StyleSystem.Instance.AddStyle(20f * targets.Count, "РАЗДЕЛЕНИЕ!");
+                    return;
+                }
+            }
+
+            var single = ParryUtility.FindPriorityEnemy(lastPos, searchRadius);
+            if (single != null)
+            {
+                Vector3 dir = (single.transform.position - lastPos).normalized;
+                HitscanRay(w, lastPos, dir, 60f, dmg, pierce, allowRicochet: false);
+            }
         }
 
         private void SpawnTracer(WeaponDefinition w, Vector3 from, Vector3 to)

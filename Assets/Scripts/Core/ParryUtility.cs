@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Cybershi
@@ -39,6 +40,32 @@ namespace Cybershi
                 CameraController.Shake(0.25f);
             }
             return count;
+        }
+
+        /// <summary>
+        /// До maxCount РАЗНЫХ приоритетных целей в радиусе, по убыванию приоритета
+        /// (макс. здоровье, затем близость). Для сплит-рикошета монеток.
+        /// </summary>
+        public static List<Health> FindPriorityEnemies(Vector3 from, float radius, int maxCount)
+        {
+            var result = new List<Health>(maxCount);
+            int n = Physics.OverlapSphereNonAlloc(from, radius, _overlap, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < n; i++)
+            {
+                var h = _overlap[i] != null ? _overlap[i].GetComponentInParent<Health>() : null;
+                if (h == null || !h.IsAlive || h.Faction != Faction.Enemy) continue;
+                if (!result.Contains(h)) result.Add(h);
+            }
+            result.Sort((a, b) =>
+            {
+                int byHp = b.Max.CompareTo(a.Max);
+                if (byHp != 0) return byHp;
+                float da = (a.transform.position - from).sqrMagnitude;
+                float db = (b.transform.position - from).sqrMagnitude;
+                return da.CompareTo(db);
+            });
+            if (result.Count > maxCount) result.RemoveRange(maxCount, result.Count - maxCount);
+            return result;
         }
 
         /// <summary>
