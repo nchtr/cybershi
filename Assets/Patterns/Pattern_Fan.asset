@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Pattern_Fan
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.BulletPattern
   type: 1
-  bulletPrefab: {fileID: 250835014621553685, guid: 2c39d4e052668f0458c92615ed53f351, type: 3}
+  bulletPrefab: {fileID: 5029419218016870341, guid: 2c39d4e052668f0458c92615ed53f351, type: 3}
   count: 7
   spreadAngle: 70
   bulletSpeed: 9
   damage: 8
   spinPerShot: 0
+  parryableChance: 0.35

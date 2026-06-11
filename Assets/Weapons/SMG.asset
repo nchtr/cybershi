@@ -13,14 +13,43 @@ MonoBehaviour:
   m_Name: SMG
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.WeaponDefinition
   displayName: "\u0413\u0432\u043E\u0437\u0434\u043E\u043C\u0451\u0442"
-  projectilePrefab: {fileID: 3315513677801907939, guid: 1dbe6c8783c83ce4eba15a21bfb795ce, type: 3}
+  kind: 0
   damage: 6
-  projectileSpeed: 40
   fireRate: 12
-  pelletsPerShot: 1
-  spreadAngle: 5
   automatic: 1
   knockback: 0.5
+  projectilePrefab: {fileID: 4144567752048262339, guid: 72f9b2e78e639db42a4262aa862bf3cb, type: 3}
+  projectileSpeed: 55
+  pelletsPerShot: 1
+  spreadAngle: 5
+  randomSpread: 1
+  hitscanRange: 70
+  tracerPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  allowPowerShot: 0
+  powerShotDamageMult: 3
+  meleeRange: 2.6
+  meleeCanParry: 1
+  meleeBallImpulse: 14
+  maxAmmo: 80
+  ammoPerShot: 1
+  ammoRegenPerSecond: 9
+  closeBonusMult: 1.1
+  closeRange: 3
+  falloffStart: 18
+  falloffEnd: 35
+  farMinMult: 0.6
+  lifestealOnKill: 0
+  lifestealRange: 8
+  altFire: 3
+  altFirePrefab: {fileID: 6711431973116577898, guid: 4c8488cd3ddd01840bc799a9acb9542c, type: 3}
+  altFireCooldown: 2.5
+  altFireLaunchSpeed: 16
+  pumpMaxSafe: 3
+  pumpExplosionDamage: 45
+  pumpExplosionRadius: 5
+  explosionEffectPrefab: {fileID: 0}
   cameraShake: 0.05
-  muzzleEffectPrefab: {fileID: 8449852343244752477, guid: 8d21aeb0666f63743a8730cf014a1502, type: 3}
+  muzzleEffectPrefab: {fileID: 4048516752829660205, guid: 8d21aeb0666f63743a8730cf014a1502, type: 3}
   fireSound: 3
+  altFireSound: 22

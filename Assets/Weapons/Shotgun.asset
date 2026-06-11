@@ -13,14 +13,43 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.WeaponDefinition
   displayName: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
-  projectilePrefab: {fileID: 3315513677801907939, guid: 1dbe6c8783c83ce4eba15a21bfb795ce, type: 3}
+  kind: 0
   damage: 7
-  projectileSpeed: 28
   fireRate: 1.6
-  pelletsPerShot: 8
-  spreadAngle: 32
   automatic: 0
   knockback: 6
+  projectilePrefab: {fileID: 7005857338342472955, guid: 1dbe6c8783c83ce4eba15a21bfb795ce, type: 3}
+  projectileSpeed: 45
+  pelletsPerShot: 8
+  spreadAngle: 30
+  randomSpread: 1
+  hitscanRange: 70
+  tracerPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  allowPowerShot: 0
+  powerShotDamageMult: 3
+  meleeRange: 2.6
+  meleeCanParry: 1
+  meleeBallImpulse: 14
+  maxAmmo: 0
+  ammoPerShot: 1
+  ammoRegenPerSecond: 0
+  closeBonusMult: 1.7
+  closeRange: 4
+  falloffStart: 8
+  falloffEnd: 18
+  farMinMult: 0.25
+  lifestealOnKill: 1
+  lifestealRange: 9
+  altFire: 2
+  altFirePrefab: {fileID: 0}
+  altFireCooldown: 0.35
+  altFireLaunchSpeed: 14
+  pumpMaxSafe: 3
+  pumpExplosionDamage: 45
+  pumpExplosionRadius: 5
+  explosionEffectPrefab: {fileID: 6286203358054400061, guid: 1e38ce7f5d0b6464a91fd8c952ee84b3, type: 3}
   cameraShake: 0.3
-  muzzleEffectPrefab: {fileID: 8449852343244752477, guid: 8d21aeb0666f63743a8730cf014a1502, type: 3}
+  muzzleEffectPrefab: {fileID: 4048516752829660205, guid: 8d21aeb0666f63743a8730cf014a1502, type: 3}
   fireSound: 2
+  altFireSound: 26

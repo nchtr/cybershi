@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1347318665678776369
+--- !u!1 &7534664640235744881
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,62 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4948805466184814253}
-  - component: {fileID: 421516407331171994}
-  m_Layer: 0
-  m_Name: FX_Hit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4948805466184814253
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347318665678776369}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2842606407501185277}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &421516407331171994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347318665678776369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e252a28853ac448ad7bc123c980422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cybershi.OneShotEffect
-  lifetime: 0.25
-  animatePlaceholder: 1
-  startScale: 0.3
-  endScale: 1.4
-  fadeOut: 1
-  particles: {fileID: 0}
-  soundClip: {fileID: 0}
-  soundVolume: 1
---- !u!1 &4971811398038651467
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2842606407501185277}
-  - component: {fileID: 4358247615322292611}
-  - component: {fileID: 5333116230301656353}
+  - component: {fileID: 3415512014829675826}
+  - component: {fileID: 4499354319786756723}
+  - component: {fileID: 5785264191895090671}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -71,29 +18,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2842606407501185277
+--- !u!4 &3415512014829675826
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4971811398038651467}
+  m_GameObject: {fileID: 7534664640235744881}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4948805466184814253}
+  m_Father: {fileID: 171834401936453180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4358247615322292611
+--- !u!212 &4499354319786756723
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4971811398038651467}
+  m_GameObject: {fileID: 7534664640235744881}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -145,13 +92,13 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5333116230301656353
+--- !u!114 &5785264191895090671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4971811398038651467}
+  m_GameObject: {fileID: 7534664640235744881}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 976a051b769207b4e9eceaa60c5a0814, type: 3}
@@ -162,3 +109,56 @@ MonoBehaviour:
   color: {r: 1, g: 0.95, b: 0.4, a: 1}
   size: {x: 0.5, y: 0.5}
   sortingOrder: 12
+--- !u!1 &7551807383719080175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171834401936453180}
+  - component: {fileID: 7211856206391973223}
+  m_Layer: 0
+  m_Name: FX_Hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171834401936453180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551807383719080175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3415512014829675826}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7211856206391973223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551807383719080175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e252a28853ac448ad7bc123c980422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cybershi.OneShotEffect
+  lifetime: 0.25
+  animatePlaceholder: 1
+  startScale: 0.3
+  endScale: 1.4
+  fadeOut: 1
+  particles: {fileID: 0}
+  soundClip: {fileID: 0}
+  soundVolume: 1

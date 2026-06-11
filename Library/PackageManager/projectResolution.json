@@ -19,6 +19,26 @@
       "source": "builtin",
       "testable": false
     },
+    "com.unity.ai.assistant@2.11.0-pre.1": {
+      "name": "com.unity.ai.assistant",
+      "displayName": "Assistant",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.ai.assistant@e1f49a972172",
+      "fingerprint": "e1f49a972172094d0fff5ad72e35d120e071d561",
+      "editorCompatibility": "6000.0.60f1",
+      "version": "2.11.0-pre.1",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.ai.inference@2.6.1": {
+      "name": "com.unity.ai.inference",
+      "displayName": "Sentis",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.ai.inference@9a123aee5df7",
+      "fingerprint": "9a123aee5df7bf5c7b84e4fb3d46470e013f6a36",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "2.6.1",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.multiplayer.center@1.0.1": {
       "name": "com.unity.multiplayer.center",
       "displayName": "Multiplayer Center",
@@ -26,6 +46,16 @@
       "fingerprint": "f01f4ba8d00afa4e957bddf0fcd1612a564401ff",
       "editorCompatibility": "6000.0.0a1",
       "version": "1.0.1",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.ugui@2.0.0": {
+      "name": "com.unity.ugui",
+      "displayName": "uGUI",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.ugui@a9ea81766fbd",
+      "fingerprint": "a9ea81766fbd1541520b82068401604ff0e403ed",
+      "editorCompatibility": "2019.2.0a1",
+      "version": "2.0.0",
       "source": "builtin",
       "testable": false
     },
@@ -314,6 +344,96 @@
       "displayName": "Hierarchy Core",
       "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.modules.hierarchycore",
       "version": "1.0.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.burst@1.8.29": {
+      "name": "com.unity.burst",
+      "displayName": "Burst",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.burst@6bb9aca3ef38",
+      "fingerprint": "6bb9aca3ef382e98bd0c1e4ab5fc74380c16095f",
+      "editorCompatibility": "2022.3.0a1",
+      "version": "1.8.29",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.dt.app-ui@2.1.1": {
+      "name": "com.unity.dt.app-ui",
+      "displayName": "App UI",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.dt.app-ui@8ac7e730dd5d",
+      "fingerprint": "8ac7e730dd5d58a41cb027e3460759e072fe3d6c",
+      "editorCompatibility": "2021.3.0a1",
+      "version": "2.1.1",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.collections@6.4.0": {
+      "name": "com.unity.collections",
+      "displayName": "Collections",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.collections@5b6ebd78ccc0",
+      "fingerprint": "5b6ebd78ccc06697d2e4c0fe4dd9bb826498a4f5",
+      "editorCompatibility": "6000.4.0a1",
+      "version": "6.4.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.nuget.newtonsoft-json@3.2.2": {
+      "name": "com.unity.nuget.newtonsoft-json",
+      "displayName": "Newtonsoft Json",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.nuget.newtonsoft-json@4dfd81071c64",
+      "fingerprint": "4dfd81071c6475bb9c114f920bfb4e3fc5e28c6a",
+      "editorCompatibility": "2018.4.0a1",
+      "version": "3.2.2",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.mathematics@1.3.3": {
+      "name": "com.unity.mathematics",
+      "displayName": "Mathematics",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.mathematics@19a9377c4ffa",
+      "fingerprint": "19a9377c4ffa59370edad3e6a34e4445529badde",
+      "editorCompatibility": "2021.3.0a1",
+      "version": "1.3.3",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.nuget.mono-cecil@1.11.6": {
+      "name": "com.unity.nuget.mono-cecil",
+      "displayName": "Mono Cecil",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff",
+      "fingerprint": "ecb9724e46fff855c46a4f37f0a3377a3cfffc06",
+      "editorCompatibility": "2019.4.0a1",
+      "version": "1.11.6",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.test-framework@1.6.0": {
+      "name": "com.unity.test-framework",
+      "displayName": "Test Framework",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb",
+      "fingerprint": "76560ee600cb07c29e08760be4a5c75da65a9d9e",
+      "editorCompatibility": "6000.0.44f1",
+      "version": "1.6.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.test-framework.performance@3.4.0": {
+      "name": "com.unity.test-framework.performance",
+      "displayName": "Performance testing API",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.test-framework.performance@aa81a99c4a75",
+      "fingerprint": "aa81a99c4a7555f330ebbe4671ce42b8c93c2448",
+      "editorCompatibility": "2020.3.0a1",
+      "version": "3.4.0",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.ext.nunit@2.0.5": {
+      "name": "com.unity.ext.nunit",
+      "displayName": "Custom NUnit",
+      "resolvedPath": "C:\\Users\\ilya\\Documents\\GitHub\\cybershi\\Library\\PackageCache\\com.unity.ext.nunit@d8c07649098d",
+      "fingerprint": "d8c07649098d3936da4c8ab500960c1776b44592",
+      "editorCompatibility": "2019.4.0a1",
+      "version": "2.0.5",
       "source": "builtin",
       "testable": false
     }

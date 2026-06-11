@@ -27,7 +27,7 @@ MonoBehaviour:
     collapsed: 0
   - groupType: UnityEngine.CapsuleCollider, UnityEngine.PhysicsModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    collapsed: 0
+    collapsed: 1
   - groupType: UnityEngine.SphereCollider, UnityEngine.PhysicsModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     collapsed: 0

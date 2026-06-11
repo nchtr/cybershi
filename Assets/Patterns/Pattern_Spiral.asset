@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Pattern_Spiral
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.BulletPattern
   type: 3
-  bulletPrefab: {fileID: 250835014621553685, guid: 2c39d4e052668f0458c92615ed53f351, type: 3}
+  bulletPrefab: {fileID: 5029419218016870341, guid: 2c39d4e052668f0458c92615ed53f351, type: 3}
   count: 14
   spreadAngle: 0
   bulletSpeed: 7.5
   damage: 9
   spinPerShot: 17
+  parryableChance: 0.15
