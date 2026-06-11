@@ -33,16 +33,17 @@ namespace Cybershi
         [Tooltip("Множитель гравитации на падении — для резкого приземления.")]
         public float fallGravityMult = 1.8f;
         public float maxFallSpeed = 45f;
-        [Tooltip("Коэффициент гашения прыжка при раннем отпускании кнопки (регулируемая высота).")]
-        [Range(0f, 1f)] public float jumpCutMultiplier = 0.45f;
+        [Tooltip("Гашение прыжка при раннем отпускании. 1 = высота НЕ зависит от времени зажатия.")]
+        [Range(0f, 1f)] public float jumpCutMultiplier = 1f;
         public float coyoteTime = 0.1f;
         public float jumpBuffer = 0.12f;
 
-        [Header("Стены (только в 2D)")]
+        [Header("Стены")]
         public float wallCheckDistance = 0.18f;
         public float wallSlideSpeed = 4f;
         public Vector2 wallJumpForce = new Vector2(11f, 14f);
-        public float wallJumpLockTime = 0.16f;
+        [Tooltip("Сколько прыжков от стен доступно до касания земли.")]
+        public int maxWallJumps = 3;
 
         [Header("Рывок (Dash)")]
         public float dashSpeed = 28f;
@@ -53,12 +54,15 @@ namespace Cybershi
         public bool dashInvulnerable = true;
 
         [Header("Подкат (Slide)")]
+        [Tooltip("Постоянная скорость подката: держится, пока зажат Ctrl.")]
         public float slideSpeed = 16f;
-        public float slideFriction = 14f;
-        public float slideMinSpeed = 5f;
         [Tooltip("Во сколько раз уменьшается высота капсулы во время подката.")]
         [Range(0.3f, 1f)] public float slideHeightScale = 0.5f;
         public float slideJumpBoost = 4f;
+
+        [Header("Парирование рывком")]
+        [Tooltip("Радиус, в котором рывок отбивает подсвеченные снаряды.")]
+        public float dashParryRadius = 1.8f;
 
         [Header("Граунд-слэм (Ground Slam)")]
         public float slamSpeed = 42f;
@@ -93,9 +97,12 @@ namespace Cybershi
 
         private float _coyoteTimer;
         private float _jumpBufferTimer;
-        private float _wallJumpLockTimer;
         private float _wallCoyoteTimer;
-        private int _lastWallDir;
+        private bool _hasWall;            // есть вертикальная поверхность рядом (любая)
+        private Vector3 _wallNormal;      // её нормаль (куда отталкиваться)
+        private Vector3 _lastWallNormal;
+        private int _wallJumpsLeft;
+        private Vector3 _slideDir;
         private float _dashTimer;
         private float _dashChargeTimer;
         private int _dashCharges;
@@ -283,32 +290,81 @@ namespace Cybershi
             }
         }
 
+        // Направления проб для поиска стен в 3D (горизонталь).
+        private static readonly Vector3[] _wallProbes =
+            { Vector3.right, Vector3.left, Vector3.forward, Vector3.back };
+
         private void WallCheck()
         {
             _wallDir = 0;
-            if (!Is2D || _grounded) return;
+            _hasWall = false;
+            if (_grounded) return;
 
             Vector3 center = transform.position + _col.center;
             float reach = _col.radius + wallCheckDistance;
 
-            // Луч пускаем из ЦЕНТРА капсулы, а не от её края. Если стартовать от края, то при
-            // плотном прижатии к стене начало луча оказывается ВНУТРИ коллайдера стены, и
-            // Physics.Raycast его не регистрирует — из-за этого прыжок от стены раньше
-            // срабатывал только с одной стороны. Из центра обе стороны детектятся одинаково.
-            bool wallRight = RayHitsEnvironment(center, Vector3.right, reach);
-            bool wallLeft = RayHitsEnvironment(center, Vector3.left, reach);
+            // Лучи из ЦЕНТРА капсулы: при прижатии к стене начало луча от края оказывалось бы
+            // внутри коллайдера стены и Raycast его не видел. Из центра все стороны равноценны —
+            // отталкиваться можно от ЛЮБОЙ вертикальной поверхности.
+            if (Is2D)
+            {
+                bool wallRight = TryWall(center, Vector3.right, reach, out var nR);
+                bool wallLeft = TryWall(center, Vector3.left, reach, out var nL);
 
-            if (wallRight && wallLeft)
-                _wallDir = InputH > 0.01f ? 1 : (InputH < -0.01f ? -1 : _facing); // в узком коридоре — по вводу/взгляду
-            else if (wallRight) _wallDir = 1;
-            else if (wallLeft) _wallDir = -1;
+                if (wallRight && wallLeft)
+                {
+                    _wallDir = InputH > 0.01f ? 1 : (InputH < -0.01f ? -1 : _facing);
+                    _wallNormal = _wallDir > 0 ? nR : nL;
+                }
+                else if (wallRight) { _wallDir = 1; _wallNormal = nR; }
+                else if (wallLeft) { _wallDir = -1; _wallNormal = nL; }
+                _hasWall = _wallDir != 0;
+            }
+            else
+            {
+                // 3D: пробуем направление движения/взгляда, затем 4 стороны света.
+                if (TryWall(center, _facing3D, reach, out var n0)) { _hasWall = true; _wallNormal = n0; }
+                else
+                {
+                    for (int i = 0; i < _wallProbes.Length; i++)
+                    {
+                        if (TryWall(center, _wallProbes[i], reach, out var nn))
+                        {
+                            _hasWall = true;
+                            _wallNormal = nn;
+                            break;
+                        }
+                    }
+                }
+            }
 
             // Койот-тайм для стен: можно отпрыгнуть ещё мгновение после отрыва.
-            if (_wallDir != 0)
+            if (_hasWall)
             {
                 _wallCoyoteTimer = coyoteTime;
-                _lastWallDir = _wallDir;
+                _lastWallNormal = _wallNormal;
             }
+        }
+
+        /// <summary>Есть ли стена в направлении dir; возвращает её нормаль (вертикальные поверхности).</summary>
+        private bool TryWall(Vector3 origin, Vector3 dir, float dist, out Vector3 normal)
+        {
+            normal = Vector3.zero;
+            if (dir.sqrMagnitude < 0.001f) return false;
+            dir.y = 0f;
+            dir.Normalize();
+            int n = Physics.RaycastNonAlloc(new Ray(origin, dir), _rayHits, dist, environmentMask, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < n; i++)
+            {
+                if (_rayHits[i].collider.transform.IsChildOf(transform)) continue;
+                // Вертикальная поверхность: нормаль почти горизонтальна.
+                if (Mathf.Abs(_rayHits[i].normal.y) > 0.5f) continue;
+                normal = _rayHits[i].normal;
+                normal.y = 0f;
+                normal.Normalize();
+                return true;
+            }
+            return false;
         }
 
         private bool RayHitsEnvironment(Vector3 origin, Vector3 dir, float dist)
@@ -326,8 +382,8 @@ namespace Cybershi
         private void Timers(float dt)
         {
             _coyoteTimer = _grounded ? coyoteTime : _coyoteTimer - dt;
+            if (_grounded) _wallJumpsLeft = maxWallJumps; // касание земли восстанавливает прыжки от стен
             if (_jumpBufferTimer > 0f) _jumpBufferTimer -= dt;
-            if (_wallJumpLockTimer > 0f) _wallJumpLockTimer -= dt;
             if (_wallCoyoteTimer > 0f) _wallCoyoteTimer -= dt;
 
             // Перезарядка зарядов рывка.
@@ -365,21 +421,16 @@ namespace Cybershi
             float vUp = vel.y;
             Vector3 horiz = new Vector3(vel.x, 0f, vel.z);
 
-            // Блокировка горизонтального управления сразу после прыжка от стены.
-            bool controlLocked = _wallJumpLockTimer > 0f;
+            // Управление НИКОГДА не блокируется — в том числе сразу после прыжка от стены.
             float accel = _grounded ? groundAccel : airAccel;
-
-            if (!controlLocked)
+            if (wish.sqrMagnitude > 0.01f)
             {
-                if (wish.sqrMagnitude > 0.01f)
-                {
-                    Vector3 target = wish * moveSpeed;
-                    horiz = Vector3.MoveTowards(horiz, target, accel * dt);
-                }
-                else if (_grounded)
-                {
-                    horiz = Vector3.MoveTowards(horiz, Vector3.zero, groundFriction * dt);
-                }
+                Vector3 target = wish * moveSpeed;
+                horiz = Vector3.MoveTowards(horiz, target, accel * dt);
+            }
+            else if (_grounded)
+            {
+                horiz = Vector3.MoveTowards(horiz, Vector3.zero, groundFriction * dt);
             }
 
             // Прыжок (обычный / от стены)
@@ -393,13 +444,15 @@ namespace Cybershi
                     _jumpBufferTimer = 0f;
                     Sfx(SoundId.PlayerJump);
                 }
-                else if (_wallDir != 0 || _wallCoyoteTimer > 0f)
+                else if ((_hasWall || _wallCoyoteTimer > 0f) && _wallJumpsLeft > 0)
                 {
-                    int wd = _wallDir != 0 ? _wallDir : _lastWallDir;
-                    // Отталкивание ВСЕГДА от стены: wd=+1 (стена справа) → толкаем влево, и наоборот.
-                    horiz = new Vector3(-wd * wallJumpForce.x, 0f, horiz.z);
+                    // Отталкивание по нормали стены — работает от ЛЮБОЙ вертикальной поверхности
+                    // (в 2D и 3D). Лимит maxWallJumps прыжков до касания земли; управление в
+                    // воздухе не блокируется — дальнейшее движение без штрафов.
+                    Vector3 n = _hasWall ? _wallNormal : _lastWallNormal;
+                    horiz = n * wallJumpForce.x;
                     vUp = wallJumpForce.y;
-                    _wallJumpLockTimer = wallJumpLockTime;
+                    _wallJumpsLeft--;
                     _wallCoyoteTimer = 0f;
                     _jumpBufferTimer = 0f;
                     Sfx(SoundId.PlayerWallJump);
@@ -422,26 +475,23 @@ namespace Cybershi
         private Vector3 TickSlide(Vector3 vel, float dt)
         {
             // Прыжок из подката — длинный прыжок с бустом
-            if ((_jumpQueued || _jumpBufferTimer > 0f) && _grounded)
+            if (_jumpQueued || _jumpBufferTimer > 0f)
             {
                 EndSlide();
-                Vector3 dir = new Vector3(vel.x, 0f, vel.z).normalized;
-                if (dir.sqrMagnitude < 0.01f) dir = Is2D ? Vector3.right * _facing : _facing3D;
-                Vector3 boosted = dir * (slideSpeed + slideJumpBoost);
+                Vector3 boosted = _slideDir * (slideSpeed + slideJumpBoost);
                 Sfx(SoundId.PlayerJump);
                 return new Vector3(boosted.x, JumpVelocity(), boosted.z);
             }
 
-            // Прерывание подката
-            float speed = new Vector3(vel.x, 0f, vel.z).magnitude;
-            if (!_slideSlamHeld || speed < slideMinSpeed || !_grounded)
+            // Подкат ПОСТОЯННЫЙ: длится, пока зажат Ctrl. Скорость не затухает,
+            // съезд с уступа не прерывает подкат (горизонталь держится, гравитация работает).
+            if (!_slideSlamHeld)
             {
                 EndSlide();
                 return TickNormal(vel, dt);
             }
 
-            Vector3 horiz = new Vector3(vel.x, 0f, vel.z);
-            horiz = Vector3.MoveTowards(horiz, Vector3.zero, slideFriction * dt);
+            Vector3 horiz = _slideDir * slideSpeed;
             float vUp = ApplyGravity(vel.y, dt);
             return new Vector3(horiz.x, vUp, horiz.z);
         }
@@ -455,6 +505,10 @@ namespace Cybershi
                 return TickNormal(_dashDir * (moveSpeed * 0.6f), dt); // мягкий выход
             }
             _dashTimer -= dt;
+
+            // Рывок ПАРИРУЕТ подсвеченные снаряды на своём пути.
+            ParryUtility.TryParry(transform.position, dashParryRadius, _dashDir, gameObject);
+
             return _dashDir * dashSpeed;
         }
 
@@ -502,16 +556,17 @@ namespace Cybershi
         private Vector3 StartSlide()
         {
             _state = MoveState.Sliding;
-            // Уменьшаем хитбокс и выдаём импульс вперёд (возвращаем как стартовую скорость).
+            // Направление фиксируется на входе в подкат и держится до отпускания Ctrl.
             Vector3 dir = Is2D ? Vector3.right * _facing : _facing3D;
             if (Is2D && Mathf.Abs(InputH) > 0.01f) dir = Vector3.right * Mathf.Sign(InputH);
+            _slideDir = dir;
 
             _col.height = _defaultColHeight * slideHeightScale;
             _col.center = _defaultColCenter - Vector3.up * (_defaultColHeight - _col.height) * 0.5f;
             Sfx(SoundId.PlayerSlide);
 
             float vUp = Mathf.Min(0f, _rb.linearVelocity.y);
-            return dir * slideSpeed + Vector3.up * vUp;
+            return _slideDir * slideSpeed + Vector3.up * vUp;
         }
 
         private void EndSlide()

@@ -28,5 +28,7 @@ namespace Cybershi
         public float damage = 8f;
         [Tooltip("Доворот кольца за залп (для Spiral), градусы.")]
         public float spinPerShot = 13f;
+        [Tooltip("Доля пуль, которые можно ПАРИРОВАТЬ (подсвечиваются другим цветом).")]
+        [Range(0f, 1f)] public float parryableChance = 0f;
     }
 }

@@ -124,6 +124,35 @@ namespace Cybershi
             }
         }
 
+        /// <summary>Альтернативный огонь: ПКМ / левый триггер.</summary>
+        public bool AltFirePressed
+        {
+            get
+            {
+#if ENABLE_INPUT_SYSTEM
+                bool m = Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame;
+                bool g = Gamepad.current != null && Gamepad.current.leftTrigger.wasPressedThisFrame;
+                return m || g;
+#else
+                return Input.GetMouseButtonDown(1);
+#endif
+            }
+        }
+
+        public bool AltFireHeld
+        {
+            get
+            {
+#if ENABLE_INPUT_SYSTEM
+                bool m = Mouse.current != null && Mouse.current.rightButton.isPressed;
+                bool g = Gamepad.current != null && Gamepad.current.leftTrigger.ReadValue() > 0.5f;
+                return m || g;
+#else
+                return Input.GetMouseButton(1);
+#endif
+            }
+        }
+
         public bool JumpPressed => Pressed(KeyNew.Jump, KeyCode.Space);
         public bool JumpHeld => Held(KeyNew.Jump, KeyCode.Space);
         public bool DashPressed => Pressed(KeyNew.Dash, KeyCode.LeftShift);

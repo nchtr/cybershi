@@ -1,18 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Cybershi
 {
     /// <summary>
-    /// Снаряд. Движется без физического Rigidbody — каждый кадр делает RaycastAll по пути,
-    /// что исключает "протыкание" быстрых пуль сквозь тонкие стены (важно для шутера).
-    /// Не имеет своего коллайдера, поэтому снаряды не сталкиваются друг с другом —
-    /// это держит буллет-хелл дешёвым. Всегда спавнится через <see cref="PoolManager"/>.
+    /// Снаряд. Движется без Rigidbody — каждый кадр Raycast по пути (быстрые пули не
+    /// протыкают стены, и пули не сталкиваются между собой). Всегда через <see cref="PoolManager"/>.
     ///
-    /// Свою/чужую фракцию различает по <see cref="IDamageable.Faction"/>: пуля бьёт всех,
-    /// кроме фракции владельца. Всё без коллайдеров (только Default-окружение) считается стеной.
+    /// Новое:
+    ///  • статический реестр <see cref="Active"/> — по нему работают грейз, парирование и магнит;
+    ///  • <see cref="Parryable"/> — подсвеченный снаряд можно отбить (см. <see cref="Parry"/>):
+    ///    он переходит игроку, получает огромный урон и самонаводится на приоритетную цель;
+    ///  • <see cref="attractable"/> — гвозди притягиваются к <see cref="NailMagnet"/>;
+    ///  • урон считается В МОМЕНТ ПОПАДАНИЯ с учётом дистанционного модификатора оружия
+    ///    (<see cref="sourceWeapon"/>): дробовик силён в упор, слаб издали и т.п.
     /// </summary>
     public class Projectile : MonoBehaviour, IPoolable
     {
+        /// <summary>Все активные снаряды в сцене (для грейза/парирования/магнита).</summary>
+        public static readonly List<Projectile> Active = new();
+
         [Header("Параметры (могут перезаписываться оружием/паттерном)")]
         public float speed = 24f;
         public float damage = 10f;
@@ -20,20 +27,53 @@ namespace Cybershi
         public float knockback = 0f;
         [Tooltip("Дуга: множитель гравитации (0 — летит прямо).")]
         public float gravityScale = 0f;
-        [Tooltip("Поворачивать спрайт по направлению полёта (спрайт смотрит вправо, +X).")]
+        [Tooltip("Поворачивать спрайт по направлению полёта.")]
         public bool orientToVelocity = true;
+
+        [Header("Парирование")]
+        [Tooltip("Множитель урона спарированного снаряда (огромный — награда за риск).")]
+        public float parryDamageMult = 10f;
+        public float parrySpeedMult = 1.6f;
+        [Tooltip("Скорость доворота самонаведения после парирования, град/с.")]
+        public float parryHomingTurnSpeed = 540f;
+        public Color parryableTint = new Color(0.4f, 1f, 1f);
+        public Color parriedTint = new Color(1f, 1f, 0.5f);
+
+        [Header("Магнит (для гвоздей)")]
+        [Tooltip("Снаряд притягивается к активным NailMagnet.")]
+        public bool attractable = false;
+        public float attractTurnSpeed = 480f;
 
         [Header("Эффекты")]
         public GameObject hitEffectPrefab;
 
-        // Маска столкновений: что вообще может остановить пулю. ~0 = всё, кроме триггеров.
         public LayerMask collisionMask = ~0;
+
+        // --- рантайм ---
+        [System.NonSerialized] public WeaponDefinition sourceWeapon; // для falloff и DamageInfo
+        public bool Parryable { get; private set; }
+        public bool Grazed { get; set; }                 // уже засчитан грейзом
+        public Faction OwnerFaction => _ownerFaction;
 
         private Vector3 _velocity;
         private float _age;
         private Faction _ownerFaction;
         private GameObject _owner;
+        private Vector3 _launchOrigin;
+        private bool _parried;
+        private Health _homingTarget;
+        private SpriteRenderer _sr;
+        private Color _baseColor;
         private readonly RaycastHit[] _hits = new RaycastHit[16];
+
+        private void Awake()
+        {
+            _sr = GetComponentInChildren<SpriteRenderer>();
+            if (_sr != null) _baseColor = _sr.color;
+        }
+
+        private void OnEnable() => Active.Add(this);
+        private void OnDisable() => Active.Remove(this);
 
         /// <summary>Запустить снаряд. Вызывается оружием/эмиттером сразу после Spawn.</summary>
         public void Launch(Vector3 direction, Faction ownerFaction, GameObject owner, float? speedOverride = null, float? damageOverride = null)
@@ -41,6 +81,7 @@ namespace Cybershi
             _ownerFaction = ownerFaction;
             _owner = owner;
             _age = 0f;
+            _launchOrigin = transform.position;
             float spd = speedOverride ?? speed;
             if (damageOverride.HasValue) damage = damageOverride.Value;
 
@@ -49,7 +90,47 @@ namespace Cybershi
             Orient(dir);
         }
 
-        public void OnSpawned() { _age = 0f; }
+        /// <summary>Пометить снаряд парируемым (подсветка другим цветом).</summary>
+        public void SetParryable(bool value)
+        {
+            Parryable = value;
+            if (_sr != null) _sr.color = value ? parryableTint : _baseColor;
+        }
+
+        /// <summary>
+        /// Парировать: снаряд переходит новому владельцу (игроку), урон умножается,
+        /// включается самонаведение на цель (или отражение по fallbackDir).
+        /// </summary>
+        public void Parry(GameObject newOwner, Health target, Vector3 fallbackDir)
+        {
+            if (_parried) return;
+            _parried = true;
+            Parryable = false;
+            _ownerFaction = Faction.Player;
+            _owner = newOwner;
+            damage *= parryDamageMult;
+            _homingTarget = target;
+            _launchOrigin = transform.position;
+
+            Vector3 dir = target != null
+                ? (target.transform.position - transform.position).normalized
+                : (fallbackDir.sqrMagnitude > 0.001f ? fallbackDir.normalized : -_velocity.normalized);
+            _velocity = dir * (_velocity.magnitude * parrySpeedMult);
+            Orient(dir);
+            if (_sr != null) _sr.color = parriedTint;
+        }
+
+        public void OnSpawned()
+        {
+            _age = 0f;
+            _parried = false;
+            Parryable = false;
+            Grazed = false;
+            _homingTarget = null;
+            sourceWeapon = null;
+            if (_sr != null) _sr.color = _baseColor;
+        }
+
         public void OnDespawned() { }
 
         private void Update()
@@ -60,6 +141,18 @@ namespace Cybershi
 
             if (gravityScale != 0f)
                 _velocity += Physics.gravity * (gravityScale * dt);
+
+            // Самонаведение после парирования.
+            if (_parried && _homingTarget != null && _homingTarget.IsAlive)
+                Steer(_homingTarget.transform.position, parryHomingTurnSpeed, dt);
+
+            // Притяжение к магниту.
+            if (attractable && !_parried)
+            {
+                var magnet = NailMagnet.FindNearest(transform.position);
+                if (magnet != null)
+                    Steer(magnet.transform.position, attractTurnSpeed, dt);
+            }
 
             Vector3 step = _velocity * dt;
             float dist = step.magnitude;
@@ -73,27 +166,45 @@ namespace Cybershi
                 for (int i = 0; i < n; i++)
                 {
                     var col = _hits[i].collider;
-                    // Игнорируем владельца и его дочерние коллайдеры.
                     if (_owner != null && col.transform.IsChildOf(_owner.transform)) continue;
 
                     var dmg = col.GetComponentInParent<IDamageable>();
                     if (dmg != null)
                     {
-                        if (dmg.Faction == _ownerFaction) continue; // своих не задеваем — летим дальше
-                        Vector3 push = dir * knockback;
-                        dmg.TakeDamage(new DamageInfo(damage, _hits[i].point, _hits[i].normal, _ownerFaction, _owner, push));
+                        if (dmg.Faction == _ownerFaction) continue;
+
+                        float final = damage;
+                        if (sourceWeapon != null)
+                            final *= sourceWeapon.DistanceDamageMult(Vector3.Distance(_launchOrigin, _hits[i].point));
+
+                        var info = new DamageInfo(final, _hits[i].point, _hits[i].normal, _ownerFaction, _owner, dir * knockback)
+                        {
+                            Weapon = sourceWeapon,
+                            WasParried = _parried
+                        };
+                        dmg.TakeDamage(info);
                         Impact(_hits[i].point, _hits[i].normal);
                         return;
                     }
 
-                    // Объект без IDamageable, но с коллайдером — стена/пол.
                     Impact(_hits[i].point, _hits[i].normal);
                     return;
                 }
             }
 
             transform.position += step;
-            if (orientToVelocity && gravityScale != 0f) Orient(dir);
+            if (orientToVelocity && (gravityScale != 0f || _parried || attractable))
+                Orient(dir);
+        }
+
+        private void Steer(Vector3 target, float turnSpeedDeg, float dt)
+        {
+            Vector3 want = target - transform.position;
+            if (want.sqrMagnitude < 0.0001f) return;
+            float spd = _velocity.magnitude;
+            Vector3 newDir = Vector3.RotateTowards(_velocity.normalized, want.normalized,
+                turnSpeedDeg * Mathf.Deg2Rad * dt, 0f);
+            _velocity = newDir * spd;
         }
 
         private void Impact(Vector3 point, Vector3 normal)
@@ -112,7 +223,6 @@ namespace Cybershi
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
-        // Простая вставочная сортировка попаданий по дистанции (n мало).
         private void SortByDistance(int n)
         {
             for (int i = 1; i < n; i++)

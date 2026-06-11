@@ -38,6 +38,9 @@ namespace Cybershi
         /// <summary>C#-событие смерти для подписки из кода (враг сообщает трекеру боя и т.п.).</summary>
         public event System.Action<Health, DamageInfo> Died;
 
+        /// <summary>Глобальное событие: умер ЛЮБОЙ Health. Слушают StyleSystem и Vampirism.</summary>
+        public static event System.Action<Health, DamageInfo> AnyDeath;
+
         private float _current;
 
         public Faction Faction => faction;
@@ -82,6 +85,7 @@ namespace Cybershi
         private void Die(DamageInfo info)
         {
             Died?.Invoke(this, info);
+            AnyDeath?.Invoke(this, info);
             OnDeathEvent?.Invoke();
 
             if (deathEffectPrefab != null)

@@ -25,7 +25,21 @@ namespace Cybershi
         EnemyShoot,
         EnemyHurt,
         EnemyDeath,
-        Impact
+        Impact,
+        // --- новые механики (добавлены в конец, чтобы не сломать сериализацию) ---
+        Parry,
+        Graze,
+        MeleeSwing,
+        MeleeHit,
+        CoinToss,
+        Ricochet,
+        MagnetDeploy,
+        BallLaunch,
+        BallBounce,
+        PowerShot,
+        PumpReload,
+        Explosion,
+        Heal
     }
 
     /// <summary>

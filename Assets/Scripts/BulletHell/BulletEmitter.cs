@@ -81,7 +81,12 @@ namespace Cybershi
             var go = PoolManager.Spawn(pattern.bulletPrefab, origin, Quaternion.identity);
             var proj = go != null ? go.GetComponent<Projectile>() : null;
             if (proj != null)
+            {
                 proj.Launch(dir, ownerFaction, gameObject, pattern.bulletSpeed, pattern.damage);
+                // Часть пуль — парируемые (подсвечиваются и отбиваются рывком/ближней атакой).
+                if (pattern.parryableChance > 0f && Random.value < pattern.parryableChance)
+                    proj.SetParryable(true);
+            }
         }
     }
 }

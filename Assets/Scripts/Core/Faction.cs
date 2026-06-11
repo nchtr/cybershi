@@ -24,6 +24,8 @@ namespace Cybershi
         public Vector3 Knockback;    // импульс отбрасывания (мир)
         public GameObject Source;    // кто нанёс урон (оружие/враг)
         public Faction SourceFaction;
+        public WeaponDefinition Weapon; // каким оружием (для стиля/вампиризма); может быть null
+        public bool WasParried;         // урон от спарированного снаряда
 
         public DamageInfo(float amount, Vector3 point, Vector3 normal, Faction sourceFaction, GameObject source = null, Vector3 knockback = default)
         {
@@ -33,6 +35,8 @@ namespace Cybershi
             SourceFaction = sourceFaction;
             Source = source;
             Knockback = knockback;
+            Weapon = null;
+            WasParried = false;
         }
     }
 

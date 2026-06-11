@@ -30,6 +30,11 @@ namespace Cybershi
         private Image _bossFill;
         private Text _bossName;
 
+        private Image _grazeFill;
+        private Text _styleRank;
+        private Image _styleFill;
+        private Text _styleEvent;
+
         private PlayerController _player;
         private Health _playerHealth;
         private WeaponController _weapon;
@@ -62,10 +67,34 @@ namespace Cybershi
                 new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f),
                 new Vector2(40f, -86f), new Vector2(420f, 18f));
 
+            // --- Грейз-энергия (под зарядами рывка) ---
+            var grazeGo = new GameObject("GrazeBar", typeof(RectTransform));
+            grazeGo.transform.SetParent(_canvas.transform, false);
+            var grazeRt = UIBuilder.SetRect(grazeGo.GetComponent<RectTransform>(),
+                new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f),
+                new Vector2(40f, -112f), new Vector2(420f, 10f));
+            _grazeFill = UIBuilder.Bar(grazeRt, new Color(0.05f, 0.1f, 0.12f, 0.85f), new Color(0.3f, 1f, 1f));
+
+            // --- Стиль (справа, под индикатором боя) ---
+            _styleRank = UIBuilder.Label(_canvas.transform, "D", 72, TextAnchor.UpperRight, UIBuilder.Accent);
+            UIBuilder.SetRect(_styleRank, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f),
+                new Vector2(-40f, -84f), new Vector2(200f, 80f));
+
+            var styleBarGo = new GameObject("StyleBar", typeof(RectTransform));
+            styleBarGo.transform.SetParent(_canvas.transform, false);
+            var styleRt = UIBuilder.SetRect(styleBarGo.GetComponent<RectTransform>(),
+                new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f),
+                new Vector2(-40f, -168f), new Vector2(240f, 10f));
+            _styleFill = UIBuilder.Bar(styleRt, new Color(0.08f, 0.08f, 0.12f, 0.85f), new Color(1f, 0.8f, 0.3f));
+
+            _styleEvent = UIBuilder.Label(_canvas.transform, "", 24, TextAnchor.UpperRight, new Color(1f, 0.9f, 0.5f));
+            UIBuilder.SetRect(_styleEvent, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f),
+                new Vector2(-40f, -186f), new Vector2(420f, 32f));
+
             // --- Оружие (снизу слева) ---
             _weaponText = UIBuilder.Label(_canvas.transform, "", 30, TextAnchor.LowerLeft, Color.white);
             UIBuilder.SetRect(_weaponText, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0f, 0f),
-                new Vector2(40f, 40f), new Vector2(700f, 44f));
+                new Vector2(40f, 40f), new Vector2(900f, 44f));
 
             // --- Индикатор боя (сверху справа) ---
             _combatText = UIBuilder.Label(_canvas.transform, "", 26, TextAnchor.UpperRight, new Color(1f, 0.5f, 0.3f));
@@ -109,6 +138,38 @@ namespace Cybershi
             UpdateCombat();
             UpdateWaves();
             UpdateCrosshair();
+            UpdateGraze();
+            UpdateStyle();
+        }
+
+        private void UpdateGraze()
+        {
+            var graze = GrazeSystem.Instance;
+            if (graze == null) { _grazeFill.fillAmount = 0f; return; }
+            _grazeFill.fillAmount = graze.Energy;
+            // Полный заряд — полоса пульсирует белым.
+            _grazeFill.color = graze.IsFull
+                ? Color.Lerp(new Color(0.3f, 1f, 1f), Color.white, Mathf.PingPong(Time.time * 4f, 1f))
+                : new Color(0.3f, 1f, 1f);
+        }
+
+        private void UpdateStyle()
+        {
+            var style = StyleSystem.Instance;
+            if (style == null)
+            {
+                _styleRank.text = "";
+                _styleFill.fillAmount = 0f;
+                _styleEvent.text = "";
+                return;
+            }
+            _styleRank.text = style.RankName;
+            _styleFill.fillAmount = style.RankProgress;
+            _styleEvent.text = style.LastEvent;
+
+            // Цвет ранга: от серого к золотому.
+            float t = style.RankIndex / 5f;
+            _styleRank.color = Color.Lerp(new Color(0.6f, 0.65f, 0.7f), new Color(1f, 0.8f, 0.2f), t);
         }
 
         private void ResolveRefs()
@@ -158,7 +219,8 @@ namespace Cybershi
         private void UpdateWeapon()
         {
             if (_weapon == null || _weapon.Current == null) { _weaponText.text = ""; return; }
-            _weaponText.text = $"[{_weapon.CurrentIndex + 1}/{_weapon.weapons.Count}]  {_weapon.Current.displayName}";
+            _weaponText.text =
+                $"[{_weapon.CurrentIndex + 1}/{_weapon.weapons.Count}]  {_weapon.Current.displayName}{_weapon.GetStatusText()}";
         }
 
         private void UpdateCombat()

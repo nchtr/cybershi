@@ -37,9 +37,10 @@ namespace Cybershi.EditorTools
 
         private class Built
         {
-            public GameObject hitFx, muzzleFx, slamFx, deathFx;
-            public GameObject playerBullet, enemyBullet;
-            public WeaponDefinition pistol, shotgun, smg;
+            public GameObject hitFx, muzzleFx, slamFx, deathFx, explosionFx, grazeFx;
+            public GameObject playerBullet, nail, enemyBullet;
+            public GameObject coin, magnet, ball, healOrb, tracer;
+            public WeaponDefinition pistol, shotgun, smg, paddle;
             public BulletPattern fan, spiral;
             public SoundLibrary soundLib;
             public GameObject drone, boss;
@@ -61,8 +62,10 @@ namespace Cybershi.EditorTools
             Debug.Log("<color=cyan>Cybershi:</color> игра собрана. Открыто главное меню — жмите Play. См. Docs/README.md");
             EditorUtility.DisplayDialog("Cybershi",
                 "Готово! Открыто главное меню (MainMenu).\nНажмите Play → «Играть».\n\n" +
-                "WASD — движение, мышь — прицел, ЛКМ — огонь,\nShift — рывок, Ctrl — подкат/слэм, Space — прыжок,\n" +
-                "1/2/3 — оружие, Esc — пауза.\n\nЗайдите вправо в арену — пойдут волны врагов и босс.",
+                "WASD — движение, мышь — прицел, ЛКМ — огонь, ПКМ — альт-огонь\n" +
+                "(монетка/накачка/магнит/мячик), Shift — рывок (парирует),\n" +
+                "Ctrl — подкат/слэм, Space — прыжок, 1-4 — оружие, Esc — пауза.\n\n" +
+                "Грейзьте пули для заряда мощного выстрела, отбивайте подсвеченные\nснаряды, убивайте в упор — лечит. Вправо — арена волн и босс.",
                 "Ок");
         }
 
@@ -105,16 +108,23 @@ namespace Cybershi.EditorTools
             b.muzzleFx = CreateEffectPrefab("FX_Muzzle", new Color(1f, 0.9f, 0.6f), 0.6f, 0.12f);
             b.slamFx = CreateEffectPrefab("FX_SlamShock", new Color(0.6f, 0.8f, 1f), 1.5f, 0.4f);
             b.deathFx = CreateEffectPrefab("FX_Death", EnemyColor, 1.2f, 0.45f);
+            b.explosionFx = CreateEffectPrefab("FX_Explosion", new Color(1f, 0.6f, 0.2f), 2.2f, 0.5f);
+            b.grazeFx = CreateEffectPrefab("FX_Graze", new Color(0.4f, 1f, 1f), 0.5f, 0.2f);
+            b.tracer = CreateTracerPrefab();
 
-            b.playerBullet = CreateProjectilePrefab("PlayerBullet", PlayerBulletColor, 0.35f, 30f, 14f, b.hitFx);
-            b.enemyBullet = CreateProjectilePrefab("EnemyBullet", EnemyBulletColor, 0.4f, 9f, 8f, b.hitFx);
+            b.playerBullet = CreateProjectilePrefab("PlayerBullet", PlayerBulletColor, 0.35f, 45f, 7f, b.hitFx, attractable: false);
+            b.nail = CreateProjectilePrefab("Nail", new Color(0.85f, 0.9f, 1f), 0.25f, 55f, 6f, b.hitFx, attractable: true);
+            b.enemyBullet = CreateProjectilePrefab("EnemyBullet", EnemyBulletColor, 0.4f, 9f, 8f, b.hitFx, attractable: false);
 
-            b.pistol = CreateWeapon("Pistol", "Револьвер", b.playerBullet, b.muzzleFx, 18f, 34f, 4f, 1, 1.5f, false, 2f, 0.12f, SoundId.PlayerShootPistol);
-            b.shotgun = CreateWeapon("Shotgun", "Дробовик", b.playerBullet, b.muzzleFx, 7f, 28f, 1.6f, 8, 32f, false, 6f, 0.3f, SoundId.PlayerShootShotgun);
-            b.smg = CreateWeapon("SMG", "Гвоздомёт", b.playerBullet, b.muzzleFx, 6f, 40f, 12f, 1, 5f, true, 0.5f, 0.05f, SoundId.PlayerShootSMG);
+            b.coin = CreateCoinPrefab();
+            b.magnet = CreateMagnetPrefab();
+            b.ball = CreateBallPrefab(b.hitFx);
+            b.healOrb = CreateHealOrbPrefab();
 
-            b.fan = CreatePattern("Pattern_Fan", BulletPatternType.Fan, b.enemyBullet, 7, 70f, 9f, 8f, 0f);
-            b.spiral = CreatePattern("Pattern_Spiral", BulletPatternType.Spiral, b.enemyBullet, 14, 0f, 7.5f, 9f, 17f);
+            CreateWeapons(b);
+
+            b.fan = CreatePattern("Pattern_Fan", BulletPatternType.Fan, b.enemyBullet, 7, 70f, 9f, 8f, 0f, parryable: 0.35f);
+            b.spiral = CreatePattern("Pattern_Spiral", BulletPatternType.Spiral, b.enemyBullet, 14, 0f, 7.5f, 9f, 17f, parryable: 0.15f);
 
             b.soundLib = CreateSoundLibrary();
 
@@ -134,7 +144,7 @@ namespace Cybershi.EditorTools
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
             BuildManagers(b.soundLib);
-            var player = BuildPlayer(new[] { b.pistol, b.shotgun, b.smg }, b.slamFx);
+            var player = BuildPlayer(b);
             BuildCamera(player.transform);
             BuildEnvironment();
             BuildUI();
@@ -161,6 +171,7 @@ namespace Cybershi.EditorTools
             new GameObject("DynamicMusicManager").AddComponent<DynamicMusicManager>().transform.SetParent(go.transform);
             new GameObject("CombatStateTracker").AddComponent<CombatStateTracker>().transform.SetParent(go.transform);
             new GameObject("PerspectiveManager").AddComponent<PerspectiveManager>().transform.SetParent(go.transform);
+            new GameObject("StyleSystem").AddComponent<StyleSystem>().transform.SetParent(go.transform);
             // InputReader создаётся сам (DontDestroyOnLoad) — отдельно ставить не нужно.
         }
 
@@ -173,7 +184,7 @@ namespace Cybershi.EditorTools
             pause.mainMenuSceneName = "MainMenu";
         }
 
-        private static PlayerController BuildPlayer(WeaponDefinition[] weapons, GameObject slamFx)
+        private static PlayerController BuildPlayer(Built b)
         {
             var root = new GameObject("Player");
             root.transform.position = new Vector3(0f, 2f, 0f);
@@ -207,11 +218,17 @@ namespace Cybershi.EditorTools
             var weaponCtl = root.AddComponent<WeaponController>();
             weaponCtl.firePoint = firePoint;
             weaponCtl.ownerFaction = Faction.Player;
-            weaponCtl.weapons.AddRange(weapons);
+            weaponCtl.weapons.AddRange(new[] { b.pistol, b.shotgun, b.smg, b.paddle });
+
+            // Грейз и вампиризм.
+            var graze = root.AddComponent<GrazeSystem>();
+            graze.grazeEffectPrefab = b.grazeFx;
+            var vamp = root.AddComponent<Vampirism>();
+            vamp.healOrbPrefab = b.healOrb;
 
             var controller = root.AddComponent<PlayerController>();
             controller.visual = visual.transform;
-            controller.slamEffectPrefab = slamFx;
+            controller.slamEffectPrefab = b.slamFx;
             return controller;
         }
 
@@ -376,13 +393,59 @@ namespace Cybershi.EditorTools
         }
 
         private static GameObject CreateProjectilePrefab(string name, Color color, float size,
-            float speed, float damage, GameObject hitFx)
+            float speed, float damage, GameObject hitFx, bool attractable)
         {
             var go = new GameObject(name);
             var proj = go.AddComponent<Projectile>();
             proj.speed = speed; proj.damage = damage; proj.lifeTime = 4f; proj.hitEffectPrefab = hitFx;
+            proj.attractable = attractable; // гвозди притягиваются магнитом
             MakeVisual(go.transform, PlaceholderVisual.Shape.Circle, color, new Vector2(size, size), 8);
             return SavePrefab(go, $"{PrefabDir}/{name}.prefab");
+        }
+
+        private static GameObject CreateTracerPrefab()
+        {
+            var go = new GameObject("FX_Tracer");
+            var tracer = go.AddComponent<TracerEffect>();
+            tracer.lifetime = 0.08f;
+            MakeVisual(go.transform, PlaceholderVisual.Shape.Square, new Color(1f, 0.95f, 0.6f, 0.9f), Vector2.one, 9);
+            return SavePrefab(go, $"{PrefabDir}/FX_Tracer.prefab");
+        }
+
+        private static GameObject CreateCoinPrefab()
+        {
+            var go = new GameObject("Coin");
+            go.AddComponent<Coin>();
+            var col = go.AddComponent<SphereCollider>();
+            col.isTrigger = true; // обычные снаряды игнорируют, хитскан ищет специально
+            col.radius = 0.3f;
+            MakeVisual(go.transform, PlaceholderVisual.Shape.Circle, new Color(1f, 0.85f, 0.2f), new Vector2(0.35f, 0.35f), 9);
+            return SavePrefab(go, $"{PrefabDir}/Coin.prefab");
+        }
+
+        private static GameObject CreateMagnetPrefab()
+        {
+            var go = new GameObject("NailMagnet");
+            go.AddComponent<NailMagnet>();
+            MakeVisual(go.transform, PlaceholderVisual.Shape.Circle, new Color(0.35f, 0.55f, 1f), new Vector2(0.6f, 0.6f), 9);
+            return SavePrefab(go, $"{PrefabDir}/NailMagnet.prefab");
+        }
+
+        private static GameObject CreateBallPrefab(GameObject hitFx)
+        {
+            var go = new GameObject("PongBall");
+            var ball = go.AddComponent<PongBall>();
+            ball.hitEffectPrefab = hitFx;
+            MakeVisual(go.transform, PlaceholderVisual.Shape.Circle, Color.white, new Vector2(0.45f, 0.45f), 9);
+            return SavePrefab(go, $"{PrefabDir}/PongBall.prefab");
+        }
+
+        private static GameObject CreateHealOrbPrefab()
+        {
+            var go = new GameObject("HealOrb");
+            go.AddComponent<HealOrb>();
+            MakeVisual(go.transform, PlaceholderVisual.Shape.Circle, new Color(0.4f, 1f, 0.5f), new Vector2(0.3f, 0.3f), 9);
+            return SavePrefab(go, $"{PrefabDir}/HealOrb.prefab");
         }
 
         private static GameObject CreateEffectPrefab(string name, Color color, float size, float lifetime)
@@ -393,26 +456,75 @@ namespace Cybershi.EditorTools
             return SavePrefab(go, $"{PrefabDir}/{name}.prefab");
         }
 
-        private static WeaponDefinition CreateWeapon(string assetName, string displayName,
-            GameObject bullet, GameObject muzzle, float damage, float speed, float fireRate,
-            int pellets, float spread, bool auto, float knockback, float shake, SoundId sound)
+        /// <summary>Создаёт и настраивает все 4 оружия (полная конфигурация до сохранения ассета).</summary>
+        private static void CreateWeapons(Built b)
         {
-            var w = ScriptableObject.CreateInstance<WeaponDefinition>();
-            w.displayName = displayName;
-            w.projectilePrefab = bullet;
-            w.muzzleEffectPrefab = muzzle;
-            w.damage = damage; w.projectileSpeed = speed; w.fireRate = fireRate;
-            w.pelletsPerShot = pellets; w.spreadAngle = spread; w.automatic = auto;
-            w.knockback = knockback; w.cameraShake = shake; w.fireSound = sound;
-            return CreateAsset(w, $"{WeaponDir}/{assetName}.asset");
+            // --- Револьвер: хитскан + монетка + мощный выстрел от грейза ---
+            var p = ScriptableObject.CreateInstance<WeaponDefinition>();
+            p.displayName = "Револьвер";
+            p.kind = WeaponKind.Hitscan;
+            p.damage = 20f; p.fireRate = 3.5f; p.automatic = false; p.knockback = 2f;
+            p.hitscanRange = 80f; p.tracerPrefab = b.tracer; p.hitEffectPrefab = b.hitFx;
+            p.allowPowerShot = true; p.powerShotDamageMult = 3f;
+            p.closeBonusMult = 1f; p.falloffStart = 60f; p.falloffEnd = 80f; p.farMinMult = 0.8f; // почти ровный урон
+            p.altFire = AltFireKind.Coin; p.altFirePrefab = b.coin;
+            p.altFireCooldown = 0.7f; p.altFireLaunchSpeed = 9f;
+            p.cameraShake = 0.12f; p.muzzleEffectPrefab = b.muzzleFx;
+            p.fireSound = SoundId.PlayerShootPistol; p.altFireSound = SoundId.CoinToss;
+            b.pistol = CreateAsset(p, $"{WeaponDir}/Pistol.asset");
+
+            // --- Дробовик: случайный веер дроби, накачка (Pump), вампиризм ---
+            var s = ScriptableObject.CreateInstance<WeaponDefinition>();
+            s.displayName = "Дробовик";
+            s.kind = WeaponKind.Projectile;
+            s.damage = 7f; s.fireRate = 1.6f; s.automatic = false; s.knockback = 6f;
+            s.projectilePrefab = b.playerBullet; s.projectileSpeed = 45f;
+            s.pelletsPerShot = 8; s.spreadAngle = 30f; s.randomSpread = true; // дробинки под случайным углом
+            s.closeBonusMult = 1.7f; s.closeRange = 4f; s.falloffStart = 8f; s.falloffEnd = 18f; s.farMinMult = 0.25f;
+            s.lifestealOnKill = true; s.lifestealRange = 9f;
+            s.altFire = AltFireKind.Pump; s.altFireCooldown = 0.35f;
+            s.pumpMaxSafe = 3; s.pumpExplosionDamage = 45f; s.pumpExplosionRadius = 5f;
+            s.explosionEffectPrefab = b.explosionFx;
+            s.cameraShake = 0.3f; s.muzzleEffectPrefab = b.muzzleFx;
+            s.fireSound = SoundId.PlayerShootShotgun; s.altFireSound = SoundId.PumpReload;
+            b.shotgun = CreateAsset(s, $"{WeaponDir}/Shotgun.asset");
+
+            // --- Гвоздомёт: ограниченный самовосстанавливающийся боезапас + магнит ---
+            var n = ScriptableObject.CreateInstance<WeaponDefinition>();
+            n.displayName = "Гвоздомёт";
+            n.kind = WeaponKind.Projectile;
+            n.damage = 6f; n.fireRate = 12f; n.automatic = true; n.knockback = 0.5f;
+            n.projectilePrefab = b.nail; n.projectileSpeed = 55f;
+            n.pelletsPerShot = 1; n.spreadAngle = 5f; n.randomSpread = true;
+            n.maxAmmo = 80; n.ammoPerShot = 1; n.ammoRegenPerSecond = 9f; // восполняется сам со временем
+            n.closeBonusMult = 1.1f; n.falloffStart = 18f; n.falloffEnd = 35f; n.farMinMult = 0.6f;
+            n.altFire = AltFireKind.Magnet; n.altFirePrefab = b.magnet;
+            n.altFireCooldown = 2.5f; n.altFireLaunchSpeed = 16f;
+            n.cameraShake = 0.05f; n.muzzleEffectPrefab = b.muzzleFx;
+            n.fireSound = SoundId.PlayerShootSMG; n.altFireSound = SoundId.MagnetDeploy;
+            b.smg = CreateAsset(n, $"{WeaponDir}/SMG.asset");
+
+            // --- Ракетка: ближний бой с парированием + мячик на ПКМ ---
+            var m = ScriptableObject.CreateInstance<WeaponDefinition>();
+            m.displayName = "Ракетка";
+            m.kind = WeaponKind.Melee;
+            m.damage = 35f; m.fireRate = 2.4f; m.automatic = false; m.knockback = 8f;
+            m.meleeRange = 2.6f; m.meleeCanParry = true; m.meleeBallImpulse = 14f;
+            m.closeBonusMult = 1f; m.falloffStart = 99f; m.falloffEnd = 100f; m.farMinMult = 1f;
+            m.altFire = AltFireKind.Ball; m.altFirePrefab = b.ball;
+            m.altFireCooldown = 1.2f; m.altFireLaunchSpeed = 16f;
+            m.cameraShake = 0.15f; m.muzzleEffectPrefab = b.muzzleFx;
+            m.fireSound = SoundId.MeleeSwing; m.altFireSound = SoundId.BallLaunch;
+            b.paddle = CreateAsset(m, $"{WeaponDir}/Paddle.asset");
         }
 
         private static BulletPattern CreatePattern(string assetName, BulletPatternType type,
-            GameObject bullet, int count, float spread, float speed, float damage, float spin)
+            GameObject bullet, int count, float spread, float speed, float damage, float spin, float parryable)
         {
             var p = ScriptableObject.CreateInstance<BulletPattern>();
             p.type = type; p.bulletPrefab = bullet; p.count = count; p.spreadAngle = spread;
             p.bulletSpeed = speed; p.damage = damage; p.spinPerShot = spin;
+            p.parryableChance = parryable;
             return CreateAsset(p, $"{PatternDir}/{assetName}.asset");
         }
 
