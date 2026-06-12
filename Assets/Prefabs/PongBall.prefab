@@ -47,11 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.PongBall
   damagePerSpeed: 0.9
   playerDamageFactor: 0.5
+  gravity: 24
+  restitution: 0.78
+  bounceKeep: 0.92
+  maxSpeed: 60
   baseLife: 4.5
   refSpeed: 22
-  bounceKeep: 0.92
   minLife: 0.8
   maxLife: 9
+  dieSpeed: 2.5
   collisionMask:
     serializedVersion: 2
     m_Bits: 4294967295

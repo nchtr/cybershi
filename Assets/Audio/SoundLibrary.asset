@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.SoundLibrary
   entries:
   - id: 1
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 488006a4d0188f444b4f2852998c40b3, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 2
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 8fcc2ffcebe94d3488f8b1bb300f64d3, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 3
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: d67caccf89a952d4b94d6cccb3563047, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 4
@@ -34,15 +37,18 @@ MonoBehaviour:
     volume: 1
     pitchRandom: 0.05
   - id: 6
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 8613376afbb45bd4cb0cdc51f4a48e73, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 7
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 3970dd9b788465548b33e27861a1637c, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 8
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: f03609333e08685439c839d6d48d75e8, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 9
@@ -50,7 +56,8 @@ MonoBehaviour:
     volume: 1
     pitchRandom: 0.05
   - id: 10
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 39a21060dbd3e634cb8e608f0202f355, type: 3}
     volume: 1
     pitchRandom: 0.05
   - id: 11
@@ -122,6 +129,7 @@ MonoBehaviour:
     volume: 1
     pitchRandom: 0.05
   - id: 28
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: d0c450523fe6fc94a86ca22fc8bccc8f, type: 3}
     volume: 1
     pitchRandom: 0.05

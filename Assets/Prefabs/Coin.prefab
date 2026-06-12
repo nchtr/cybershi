@@ -157,6 +157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.Coin
   ricochetDamageMult: 1.5
   ricochetSearchRadius: 30
+  chainRadius: 18
+  splitAge: 1
+  splitTargets: 3
+  splitDamageFactor: 0.65
+  ripeScale: 1.35
   gravity: 18
   lifeTime: 3.5
 --- !u!135 &8316442087819521130
