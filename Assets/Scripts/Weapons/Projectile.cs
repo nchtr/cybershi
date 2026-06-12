@@ -44,6 +44,17 @@ namespace Cybershi
         public bool attractable = false;
         public float attractTurnSpeed = 480f;
 
+        [Header("Взрыв при попадании (ракеты)")]
+        [Tooltip("Взрываться при ударе: AoE-урон всем вокруг, ВКЛЮЧАЯ игрока (рокет-джамп!).")]
+        public bool explodeOnImpact = false;
+        public float explosionRadius = 3.5f;
+        [Tooltip("Доля урона снаряда, идущая в AoE.")]
+        public float explosionDamageFactor = 0.8f;
+        [Tooltip("Доля AoE-урона, который получает сам игрок (рокет-джамп без суицида).")]
+        [Range(0f, 1f)] public float playerSelfDamageFactor = 0.4f;
+        public float explosionKnockback = 16f;
+        public GameObject explosionEffectPrefab;
+
         [Header("Эффекты")]
         public GameObject hitEffectPrefab;
 
@@ -207,13 +218,54 @@ namespace Cybershi
             _velocity = newDir * spd;
         }
 
+        private static readonly Collider[] _aoeOverlap = new Collider[24];
+
         private void Impact(Vector3 point, Vector3 normal)
         {
+            if (explodeOnImpact) Explode(point);
+
             if (hitEffectPrefab != null)
                 PoolManager.Spawn(hitEffectPrefab, point, Quaternion.LookRotation(Vector3.forward, normal));
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play(SoundId.Impact, point);
             PoolManager.Despawn(gameObject);
+        }
+
+        /// <summary>AoE-взрыв: бьёт всех в радиусе (игрока — с понижающим фактором → рокет-джамп).</summary>
+        private void Explode(Vector3 point)
+        {
+            if (explosionEffectPrefab != null)
+                PoolManager.Spawn(explosionEffectPrefab, point, Quaternion.identity);
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.Play(SoundId.Explosion, point);
+            CameraController.Shake(0.5f);
+
+            float aoeDamage = damage * explosionDamageFactor;
+            int n = Physics.OverlapSphereNonAlloc(point, explosionRadius, _aoeOverlap, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < n; i++)
+            {
+                var dmg = _aoeOverlap[i] != null ? _aoeOverlap[i].GetComponentInParent<IDamageable>() : null;
+                if (dmg == null || !dmg.IsAlive) continue;
+
+                Vector3 targetPos = _aoeOverlap[i].transform.position;
+                float amount = aoeDamage;
+                if (dmg.Faction == Faction.Player) amount *= playerSelfDamageFactor;
+
+                Vector3 push = (targetPos - point).normalized * explosionKnockback + Vector3.up * 4f;
+                // Убийства сплэшем засчитываются владельцу (стиль/вампиризм);
+                // самоурон игроку — «нейтральный» (рокет-джамп без штрафов системе стиля).
+                Faction srcFaction = dmg.Faction == Faction.Player ? Faction.Neutral : _ownerFaction;
+                var info = new DamageInfo(amount, targetPos, Vector3.up, srcFaction, _owner, push)
+                { Weapon = sourceWeapon };
+                dmg.TakeDamage(info);
+
+                // Физический толчок игроку (рокет-джамп) — урон его Rigidbody не двигает сам.
+                if (dmg.Faction == Faction.Player && PlayerController.Instance != null)
+                {
+                    var rb = PlayerController.Instance.GetComponent<Rigidbody>();
+                    if (rb != null) rb.linearVelocity += push;
+                }
+            }
         }
 
         private void Orient(Vector3 dir)

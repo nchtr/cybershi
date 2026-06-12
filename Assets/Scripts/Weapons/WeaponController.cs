@@ -232,9 +232,11 @@ namespace Cybershi
             Vector3 dir = AimDir();
 
             // Мощный выстрел от полного заряда грейза: пробивает все цели.
+            // Рельсотрон (hitscanPierce) пробивает всегда.
             bool power = w.allowPowerShot && GrazeSystem.Instance != null && GrazeSystem.Instance.ConsumeFull();
             float styleMult = StyleSystem.Instance != null ? StyleSystem.Instance.DamageMult(w) : 1f;
             float baseDamage = w.damage * styleMult * (power ? w.powerShotDamageMult : 1f);
+            power |= w.hitscanPierce;
 
             if (power)
             {

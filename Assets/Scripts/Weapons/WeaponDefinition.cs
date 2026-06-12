@@ -53,6 +53,8 @@ namespace Cybershi
         public float hitscanRange = 70f;
         public GameObject tracerPrefab;
         public GameObject hitEffectPrefab;
+        [Tooltip("Луч ВСЕГДА пробивает все цели (рельсотрон).")]
+        public bool hitscanPierce = false;
         [Tooltip("Разрешить «мощный выстрел» от полного заряда грейза: пробивает все цели.")]
         public bool allowPowerShot = false;
         public float powerShotDamageMult = 3f;

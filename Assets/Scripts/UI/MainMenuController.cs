@@ -13,13 +13,38 @@ namespace Cybershi
         [Tooltip("Имя игровой сцены (добавьте её в Build Settings).")]
         public string gameSceneName = "SampleArena";
 
+        [Header("Музыка меню")]
+        [Tooltip("Зацикленный трек главного меню (громкость — из настроек «Музыка»).")]
+        public AudioClip menuMusic;
+        [Range(0f, 1f)] public float menuMusicVolume = 1f;
+
         private SettingsPanel _settings;
+        private AudioSource _music;
 
         private void Start()
         {
             GameSettings.EnsureLoaded();
             Time.timeScale = 1f;
             BuildUI();
+            StartMusic();
+        }
+
+        private void StartMusic()
+        {
+            if (menuMusic == null) return;
+            _music = gameObject.AddComponent<AudioSource>();
+            _music.clip = menuMusic;
+            _music.loop = true;
+            _music.spatialBlend = 0f;
+            _music.volume = GameSettings.Music * menuMusicVolume;
+            _music.Play();
+        }
+
+        private void Update()
+        {
+            // Громкость меню-музыки следует за ползунком «Музыка» в настройках вживую.
+            if (_music != null)
+                _music.volume = GameSettings.Music * menuMusicVolume;
         }
 
         private void BuildUI()

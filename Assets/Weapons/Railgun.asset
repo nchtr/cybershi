@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2641c726ec4e7674b8015c8a1fd4d799, type: 3}
+  m_Name: Railgun
+  m_EditorClassIdentifier: Assembly-CSharp::Cybershi.WeaponDefinition
+  displayName: "Рельсотрон"
+  kind: 1
+  damage: 90
+  fireRate: 0.35
+  automatic: 0
+  knockback: 8
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 28
+  pelletsPerShot: 1
+  spreadAngle: 0
+  randomSpread: 0
+  hitscanRange: 100
+  tracerPrefab: {fileID: 6305924830518400362, guid: 6a40f2a16faa6a34ebdcd0fd44df974b, type: 3}
+  hitEffectPrefab: {fileID: 7534664640235744881, guid: 59fcd6fb6774f494299fd80fe6242787, type: 3}
+  hitscanPierce: 1
+  allowPowerShot: 0
+  powerShotDamageMult: 3
+  meleeRange: 2.6
+  meleeCanParry: 0
+  meleeBallImpulse: 14
+  maxAmmo: 0
+  ammoPerShot: 1
+  ammoRegenPerSecond: 0
+  closeBonusMult: 1
+  closeRange: 3
+  falloffStart: 95
+  falloffEnd: 100
+  farMinMult: 1
+  lifestealOnKill: 0
+  lifestealRange: 8
+  altFire: 0
+  altFirePrefab: {fileID: 0}
+  altFireCooldown: 0.8
+  altFireLaunchSpeed: 14
+  pumpMaxSafe: 3
+  pumpExplosionDamage: 45
+  pumpExplosionRadius: 5
+  explosionEffectPrefab: {fileID: 0}
+  cameraShake: 0.55
+  muzzleEffectPrefab: {fileID: 4048516752829660205, guid: 8d21aeb0666f63743a8730cf014a1502, type: 3}
+  fireSound: 29
+  altFireSound: 0

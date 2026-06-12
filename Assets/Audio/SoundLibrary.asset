@@ -133,3 +133,23 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d0c450523fe6fc94a86ca22fc8bccc8f, type: 3}
     volume: 1
     pitchRandom: 0.05
+  - id: 29
+    clips: []
+    volume: 1
+    pitchRandom: 0.05
+  - id: 30
+    clips: []
+    volume: 1
+    pitchRandom: 0.05
+  - id: 31
+    clips: []
+    volume: 1
+    pitchRandom: 0.05
+  - id: 32
+    clips: []
+    volume: 1
+    pitchRandom: 0.05
+  - id: 33
+    clips: []
+    volume: 1
+    pitchRandom: 0.05

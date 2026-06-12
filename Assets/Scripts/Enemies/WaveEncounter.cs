@@ -58,6 +58,8 @@ namespace Cybershi
         // ---- состояние / API для HUD ----
         public static WaveEncounter Active { get; private set; }
         public bool InProgress { get; private set; }
+        /// <summary>Арена пройдена (все волны зачищены). Это читает <see cref="LevelExit"/>.</summary>
+        public bool IsCompleted { get; private set; }
         public int CurrentWaveIndex { get; private set; }
         public int TotalWaves => waves != null ? waves.Length : 0;
         public int AliveCount => _alive.Count;
@@ -181,6 +183,7 @@ namespace Cybershi
         private void Finish()
         {
             InProgress = false;
+            IsCompleted = true;
             CurrentBoss = null;
 
             if (CombatStateTracker.Instance != null) CombatStateTracker.Instance.ExitCombat(this);

@@ -39,7 +39,12 @@ namespace Cybershi
         PowerShot,
         PumpReload,
         Explosion,
-        Heal
+        Heal,
+        PlayerShootRailgun,
+        PlayerShootRocket,
+        EnemyMelee,
+        EnemyLaser,
+        EnemyFlame
     }
 
     /// <summary>

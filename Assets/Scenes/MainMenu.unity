@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cybershi.MainMenuController
   gameSceneName: SampleArena
+  menuMusic: {fileID: 8300000, guid: 49c854fd0602e864aa57043d79c7e6fd, type: 3}
+  menuMusicVolume: 1
 --- !u!4 &1300924870
 Transform:
   m_ObjectHideFlags: 0
