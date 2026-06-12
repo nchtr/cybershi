@@ -51,7 +51,19 @@ MonoBehaviour:
   knockback: 0
   gravityScale: 0
   orientToVelocity: 1
+  parryDamageMult: 10
+  parrySpeedMult: 1.6
+  parryHomingTurnSpeed: 540
+  parryableTint: {r: 0.4, g: 1, b: 1, a: 1}
+  parriedTint: {r: 1, g: 1, b: 0.5, a: 1}
   attractable: 0
+  attractTurnSpeed: 480
+  explodeOnImpact: 0
+  explosionRadius: 3.5
+  explosionDamageFactor: 0.8
+  playerSelfDamageFactor: 0.4
+  explosionKnockback: 16
+  explosionEffectPrefab: {fileID: 0}
   hitEffectPrefab: {fileID: 7534664640235744881, guid: 59fcd6fb6774f494299fd80fe6242787, type: 3}
   collisionMask:
     serializedVersion: 2

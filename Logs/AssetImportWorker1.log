@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.4/staging' branch; Version is '6000.4.8f1 (f8b72d3d7343) revision 16299821'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya" at "2026-06-12T13:11:05.3341214Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya" at "2026-06-12T14:11:28.8939958Z"
 OS: 'Windows 11  (10.0.26200) Professional' Language: 'ru' Physical Memory: 24184 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-06-12T13:11:05Z
+Date: 2026-06-12T14:11:28Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.4.8f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/Users/ilya/Documents/GitHub/cybershi
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-55495
+62900
 -licensingIpc
 LicenseClient-ilya
 -force-d3d12
@@ -68,14 +68,14 @@ C:/Users/ilya/Documents/GitHub/cybershi
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-Player connection [31360]  Target information:
+Player connection [11020]  Target information:
 
-Player connection [31360]  * "[IP] 192.168.1.163 [Port] 0 [Flags] 2 [Guid] 1447055740 [EditorId] 1447055740 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [11020]  * "[IP] 192.168.1.163 [Port] 0 [Flags] 2 [Guid] 2642366256 [EditorId] 2642366256 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [31360]  * "[IP] 169.254.83.107 [Port] 0 [Flags] 2 [Guid] 1447055740 [EditorId] 1447055740 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [11020]  * "[IP] 169.254.83.107 [Port] 0 [Flags] 2 [Guid] 2642366256 [EditorId] 2642366256 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [31360] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [31360] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [11020] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [11020] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 11
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -87,8 +87,8 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.51 ms, found 1 plugins.
-Preloading 1 native plugins for Editor in 2.27 ms.
+Refreshing native plugins compatible for Editor in 3.71 ms, found 1 plugins.
+Preloading 1 native plugins for Editor in 2.42 ms.
 Initialize engine version: 6000.4.8f1 (f8b72d3d7343)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/ilya/Documents/GitHub/cybershi/Assets
@@ -107,13 +107,30 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56696
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56960
 CodeReloadManager initialized
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002490 seconds.
+Registered in 0.003602 seconds.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ilya"
+[Licensing::IpcConnector] LicenseClient-ilya channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8" at "2026-06-12T14:11:30.385666Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 15608, path: "C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              05469b9e5870495ca5a32e753644f73f
+  Correlation Id:          e1b7301c7b535d53bfe6f17ea2236449
+  External correlation Id: 5902143271795277144
+  Machine Id:              80SYv2LEMI7j7lpo2mJgSo5HpMU=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ilya-6000.4.8" (connect: 0.00s, validation: 0.00s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8-notifications" at "2026-06-12T14:11:30.3935794Z"
+[Licensing::Module] Licensing Background thread has ended after 1.50s
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -122,46 +139,27 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.313 seconds
-Domain Reload Profiling: 686ms
-	BeginReloadAssembly (104ms)
-	RebuildCommonClasses (36ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (62ms)
-	LoadAllAssembliesAndSetupDomain (160ms)
-		LoadAssemblies (101ms)
-		AnalyzeDomain (151ms)
-			TypeCache.Refresh (149ms)
-				TypeCache.ScanAssembly (137ms)
-	FinalizeReload (314ms)
+- Finished resetting the current domain, in  0.337 seconds
+Domain Reload Profiling: 892ms
+	BeginReloadAssembly (187ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (95ms)
+	LoadAllAssembliesAndSetupDomain (206ms)
+		LoadAssemblies (180ms)
+		AnalyzeDomain (194ms)
+			TypeCache.Refresh (192ms)
+				TypeCache.ScanAssembly (181ms)
+	FinalizeReload (339ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (44ms)
-			BeforeProcessingInitializeOnLoad (72ms)
-			ProcessInitializeOnLoadAttributes (72ms)
+			InitializePlatformSupportModulesInManaged (41ms)
+			BeforeProcessingInitializeOnLoad (80ms)
+			ProcessInitializeOnLoadAttributes (78ms)
 			ProcessInitializeOnLoadMethodAttributes (67ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-[Licensing::Module] Licensing is not yet initialized.
-[Licensing::Client] Error: HandshakeResponse reported an error:
-	ResponseCode: 505
-	ResponseStatus: Unsupported protocol version '1.18.1'.
-[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ilya"
-[Licensing::IpcConnector] LicenseClient-ilya channel disconnected successfully.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8" at "2026-06-12T13:11:06.9155307Z"
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 2440, path: "C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
-[Licensing::Module] LicensingClient has failed validation; ignoring
-[Licensing::Client] Handshaking with LicensingClient:
-  Version:                 1.18.1+9fbee8e
-  Session Id:              4ce7211436214201b3b99d7481d7cfc2
-  Correlation Id:          127a695c2c75f0c8603b0ea323bd99ec
-  External correlation Id: 1760487534716519730
-  Machine Id:              80SYv2LEMI7j7lpo2mJgSo5HpMU=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ilya-6000.4.8" (connect: 0.00s, validation: 0.00s, handshake: 0.01s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8-notifications" at "2026-06-12T13:11:06.9244781Z"
-[Licensing::Module] Licensing Background thread has ended after 1.59s
-[Licensing::Module] Licensing is initialized (took 0.02s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: 18966820669335-UnityPersXXXX
@@ -202,40 +200,48 @@ Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different v
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.920 seconds
-Domain Reload Profiling: 1565ms
-	BeginReloadAssembly (155ms)
-		DisableScriptedObjects (3ms)
-		CreateAndSetChildDomain (33ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (67ms)
-	LoadAllAssembliesAndSetupDomain (387ms)
-		LoadAssemblies (257ms)
-		AnalyzeDomain (188ms)
-			TypeCache.Refresh (162ms)
-				TypeCache.ScanAssembly (150ms)
-			BuildScriptInfoCaches (23ms)
-	FinalizeReload (920ms)
+- Finished resetting the current domain, in  1.294 seconds
+Domain Reload Profiling: 2194ms
+	BeginReloadAssembly (202ms)
+		DisableScriptedObjects (6ms)
+		CreateAndSetChildDomain (52ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (88ms)
+	LoadAllAssembliesAndSetupDomain (563ms)
+		LoadAssemblies (410ms)
+		AnalyzeDomain (246ms)
+			TypeCache.Refresh (216ms)
+				TypeCache.ScanAssembly (202ms)
+			BuildScriptInfoCaches (26ms)
+	FinalizeReload (1295ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (122ms)
-			ProcessInitializeOnLoadAttributes (537ms)
-			ProcessInitializeOnLoadMethodAttributes (161ms)
-			AfterProcessingInitializeOnLoad (6ms)
-		AwakeInstancesAfterBackupRestoration (5ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 2.12 ms, found 1 plugins.
+			BeforeProcessingInitializeOnLoad (186ms)
+			ProcessInitializeOnLoadAttributes (738ms)
+			ProcessInitializeOnLoadMethodAttributes (241ms)
+			AfterProcessingInitializeOnLoad (9ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 2.38 ms, found 1 plugins.
 Unloading 43 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4931 unused Assets / (16.4 MB). Loaded Objects now: 5550.
-Memory consumption went from 137.7 MB to 121.3 MB.
-Total: 14.585300 ms (FindLiveObjects: 0.581100 ms CreateObjectMapping: 0.170700 ms MarkObjects: 10.069700 ms  DeleteObjects: 3.760800 ms)
+Unloading 4938 unused Assets / (15.5 MB). Loaded Objects now: 5557.
+Memory consumption went from 137.9 MB to 122.4 MB.
+Total: 21.259500 ms (FindLiveObjects: 0.602700 ms CreateObjectMapping: 0.401400 ms MarkObjects: 15.234200 ms  DeleteObjects: 5.018700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 93665.469631 seconds.
-  path: Assets/Prefabs/Coin.prefab
-  importAddress: Guid(16da74ffb572ed0429eed272a16a3757) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/Coin.prefab using Guid(16da74ffb572ed0429eed272a16a3757) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+  Time since last request: 97290.488713 seconds.
+  path: Assets/Scenes/MainMenu.unity
+  importAddress: Guid(938ade7c8a761d043a404af67fdb1cb7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/MainMenu.unity using Guid(938ade7c8a761d043a404af67fdb1cb7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3acc8277e72f009bf119d2e71040b0de') in 0.0680403 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=995e6e06bf481ee0a70e7b047368de29 DependenciesID=1a22bffb0764d2452a1b23c01acb26f3 StaticDependenciesID=4ed52679c4cfaf10ddf24a5c5d3f3c20 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Prefabs/Nail.prefab
+  importAddress: Guid(72f9b2e78e639db42a4262aa862bf3cb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Nail.prefab using Guid(72f9b2e78e639db42a4262aa862bf3cb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
@@ -263,28 +269,17 @@ UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.Asset
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '4add9484a3769e97db4177f0c26139d0') in 0.0942572 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ae539c36eb624a2977b1fb588cc3efff DependenciesID=83e26efbf74d9121fd527989f63b25fc StaticDependenciesID=bcaa5cfccf3db4d037f173222aa485d8 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Audio/SoundLibrary.asset
-  importAddress: Guid(44af031a43367bf408be0d3fa2e99345) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Audio/SoundLibrary.asset using Guid(44af031a43367bf408be0d3fa2e99345) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '30841764a280c146d710df0291604a2f') in 0.023758 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=eb962b5f9e98f83c02c1e41fd246a916 DependenciesID=073c72211e67c94fb7377204455455b7 StaticDependenciesID=167355f006703ee2ca7966d7b34476df 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
-
-========================================================================
-Received Import Request.
-  Time since last request: 579.646647 seconds.
-  path: Assets/Prefabs/FX_Explosion.prefab
-  importAddress: Guid(1e38ce7f5d0b6464a91fd8c952ee84b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/FX_Explosion.prefab using Guid(1e38ce7f5d0b6464a91fd8c952ee84b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -294,23 +289,65 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '925fd2938b43834df592eae41673ac52') in 0.0599028 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=913e7ea8b7ddff60a7096db05f7bf0ff DependenciesID=7a8267e63818942a487a659237126377 StaticDependenciesID=b6c24b6160e6779d619e60ea69468bf2 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+ -> (Import Result ID: 'de175886c13c3767544389cb63db7f0d') in 0.0672393 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a4837bb1d07ab0d33285f397311b6de4 DependenciesID=fb59fddcde6f90f9561a42cea685e678 StaticDependenciesID=57a9231e5e2131bda2a2178cd8c3543a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.667489 seconds.
-  path: Assets/Prefabs/FX_Hit.prefab
-  importAddress: Guid(59fcd6fb6774f494299fd80fe6242787) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/FX_Hit.prefab using Guid(59fcd6fb6774f494299fd80fe6242787) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+  Time since last request: 0.000044 seconds.
+  path: Assets/Scripts/Enemies/SniperEnemy.cs
+  importAddress: Guid(1a2b3c4d5e6f708192a3b4c5d6e7f002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Enemies/SniperEnemy.cs using Guid(1a2b3c4d5e6f708192a3b4c5d6e7f002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b57a15b154597c6a6f37a6c4f8bd5b9e') in 0.017333 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a74889a7be10bf6048e150f9e532f1ca DependenciesID=86ed7e72f4c0bd2df45e4e8bb31f4478 StaticDependenciesID=4fdd87562bcd967ad5952274b5fbdaa4 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Scripts/Weapons/WeaponDefinition.cs
+  importAddress: Guid(2641c726ec4e7674b8015c8a1fd4d799) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Weapons/WeaponDefinition.cs using Guid(2641c726ec4e7674b8015c8a1fd4d799) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '86a502efda6808adb926709be41848e1') in 0.014704 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a2b6698cda42d5b13a633df15723d24d DependenciesID=e9cdf3fae0a88de8af321c146d666df4 StaticDependenciesID=855e78d6be346079124ee253fbe2184e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000430 seconds.
+  path: Assets/Scripts/Weapons/Projectile.cs
+  importAddress: Guid(59ef551fa224aa648ab8f361317f0b43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Weapons/Projectile.cs using Guid(59ef551fa224aa648ab8f361317f0b43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd2d722642c41aa6377ed9f10abcc4682') in 0.0142449 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=69831ef3cc454f758aa05698ee8a5663 DependenciesID=0033d0fb5cf91b9357d748c7d1fd1bbf StaticDependenciesID=546ae6577986b6c1ef63f176712475f7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Scripts/Weapons/WeaponController.cs
+  importAddress: Guid(f0dd8aaf75b27a644b1e21028de98718) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Weapons/WeaponController.cs using Guid(f0dd8aaf75b27a644b1e21028de98718) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e87a59c2765af11afecf8caeb65e0c2d') in 0.0151254 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c35ea9b847e9228b529bf342d4379d78 DependenciesID=22b38ae8c959b187ff5af26277b51a16 StaticDependenciesID=9de77075ee840943d80ad9e6da2ae96e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000092 seconds.
+  path: Assets/Prefabs/Enemy_Sniper.prefab
+  importAddress: Guid(2b3c4d5e6f708192a3b4c5d6e7f8a002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enemy_Sniper.prefab using Guid(2b3c4d5e6f708192a3b4c5d6e7f8a002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -320,16 +357,140 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '6a1b9506b1f4f3c31c9031a3663cf05d') in 0.0182814 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=86f4755073dc7c26fb2c9824505232e2 DependenciesID=d9e8da314e878e4c7c17f10f8814f22c StaticDependenciesID=29e326aeb3647c06ea327626093028a2 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '66a5eda2afab1462776897c681a9442c') in 0.0351542 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1d61ea2eafd41ceefe2fbed213770ef1 DependenciesID=97475b59e982c7e9b4f89849c851c551 StaticDependenciesID=4d5debae01e0be21f24dfc48c378e267 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 44
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Scripts/Audio/SoundLibrary.cs
+  importAddress: Guid(b4c0e273a2e3fbb4584454adce4aff1a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Audio/SoundLibrary.cs using Guid(b4c0e273a2e3fbb4584454adce4aff1a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'db0f597a78434fe3e45426cf3d8ffea9') in 0.0141111 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=114a65722233f98803b2cc44f2838253 DependenciesID=fda8af0a76a54111669d492279905df8 StaticDependenciesID=df23cd38616265440a8e3d92f67ed246 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
 Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
@@ -359,35 +520,41 @@ Native extension for WebGL target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Refreshing native plugins compatible for Editor in 2.63 ms, found 1 plugins.
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Refreshing native plugins compatible for Editor in 3.41 ms, found 1 plugins.
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.824 seconds
-Domain Reload Profiling: 1410ms
-	BeginReloadAssembly (177ms)
+- Finished resetting the current domain, in  1.318 seconds
+Domain Reload Profiling: 2132ms
+	BeginReloadAssembly (242ms)
 		DisableScriptedObjects (3ms)
-		CreateAndSetChildDomain (73ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (62ms)
-	LoadAllAssembliesAndSetupDomain (313ms)
-		LoadAssemblies (236ms)
-		AnalyzeDomain (132ms)
-			TypeCache.Refresh (4ms)
-			BuildScriptInfoCaches (124ms)
-	FinalizeReload (824ms)
+		CreateAndSetChildDomain (93ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (88ms)
+	LoadAllAssembliesAndSetupDomain (430ms)
+		LoadAssemblies (360ms)
+		AnalyzeDomain (161ms)
+			TypeCache.Refresh (6ms)
+			BuildScriptInfoCaches (150ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (1318ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (123ms)
-			ProcessInitializeOnLoadAttributes (289ms)
-			ProcessInitializeOnLoadMethodAttributes (301ms)
-			AfterProcessingInitializeOnLoad (6ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
+			BeforeProcessingInitializeOnLoad (194ms)
+			ProcessInitializeOnLoadAttributes (502ms)
+			ProcessInitializeOnLoadMethodAttributes (468ms)
+			AfterProcessingInitializeOnLoad (9ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Refreshing native plugins compatible for Editor in 4.08 ms, found 1 plugins.
 Unloading 43 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4929 unused Assets / (16.2 MB). Loaded Objects now: 5563.
-Memory consumption went from 138.9 MB to 122.7 MB.
-Total: 18.938800 ms (FindLiveObjects: 0.755400 ms CreateObjectMapping: 0.661300 ms MarkObjects: 12.635500 ms  DeleteObjects: 4.884600 ms)
+Unloading 4936 unused Assets / (15.9 MB). Loaded Objects now: 5565.
+Memory consumption went from 138.7 MB to 122.8 MB.
+Total: 25.668400 ms (FindLiveObjects: 0.944900 ms CreateObjectMapping: 0.920500 ms MarkObjects: 16.561100 ms  DeleteObjects: 7.237100 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

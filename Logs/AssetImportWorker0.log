@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya" at "2026-06-12T13:11:05.3220817Z"
 Built from '6000.4/staging' branch; Version is '6000.4.8f1 (f8b72d3d7343) revision 16299821'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya" at "2026-06-12T14:11:28.8723759Z"
 OS: 'Windows 11  (10.0.26200) Professional' Language: 'ru' Physical Memory: 24184 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-06-12T13:11:05Z
+Date: 2026-06-12T14:11:28Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.4.8f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/Users/ilya/Documents/GitHub/cybershi
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55495
+62900
 -licensingIpc
 LicenseClient-ilya
 -force-d3d12
@@ -68,14 +68,14 @@ C:/Users/ilya/Documents/GitHub/cybershi
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-Player connection [26644]  Target information:
+Player connection [7284]  Target information:
 
-Player connection [26644]  * "[IP] 192.168.1.163 [Port] 0 [Flags] 2 [Guid] 1337561653 [EditorId] 1337561653 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [7284]  * "[IP] 192.168.1.163 [Port] 0 [Flags] 2 [Guid] 75230755 [EditorId] 75230755 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [26644]  * "[IP] 169.254.83.107 [Port] 0 [Flags] 2 [Guid] 1337561653 [EditorId] 1337561653 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [7284]  * "[IP] 169.254.83.107 [Port] 0 [Flags] 2 [Guid] 75230755 [EditorId] 75230755 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LHD7GJB) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [26644] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [26644] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [7284] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [7284] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 11
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -87,6 +87,8 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 2.78 ms, found 1 plugins.
+Preloading 1 native plugins for Editor in 2.90 ms.
 Initialize engine version: 6000.4.8f1 (f8b72d3d7343)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/ilya/Documents/GitHub/cybershi/Assets
@@ -105,13 +107,30 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56668
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56620
 CodeReloadManager initialized
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002280 seconds.
+Registered in 0.002546 seconds.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ilya"
+[Licensing::IpcConnector] LicenseClient-ilya channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8" at "2026-06-12T14:11:30.3702249Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 15608, path: "C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              0e101c64894748beacc8ab9dc9670c65
+  Correlation Id:          e1b7301c7b535d53bfe6f17ea2236449
+  External correlation Id: 7713339400278752141
+  Machine Id:              80SYv2LEMI7j7lpo2mJgSo5HpMU=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ilya-6000.4.8" (connect: 0.00s, validation: 0.00s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8-notifications" at "2026-06-12T14:11:30.3781621Z"
+[Licensing::Module] Licensing Background thread has ended after 1.51s
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -120,46 +139,27 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.327 seconds
-Domain Reload Profiling: 707ms
-	BeginReloadAssembly (117ms)
-	RebuildCommonClasses (33ms)
+- Finished resetting the current domain, in  0.334 seconds
+Domain Reload Profiling: 894ms
+	BeginReloadAssembly (189ms)
+	RebuildCommonClasses (48ms)
 	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (56ms)
-	LoadAllAssembliesAndSetupDomain (159ms)
-		LoadAssemblies (114ms)
-		AnalyzeDomain (152ms)
-			TypeCache.Refresh (150ms)
-				TypeCache.ScanAssembly (140ms)
-	FinalizeReload (328ms)
+	initialDomainReloadingComplete (82ms)
+	LoadAllAssembliesAndSetupDomain (225ms)
+		LoadAssemblies (182ms)
+		AnalyzeDomain (213ms)
+			TypeCache.Refresh (211ms)
+				TypeCache.ScanAssembly (196ms)
+	FinalizeReload (336ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (37ms)
-			BeforeProcessingInitializeOnLoad (77ms)
-			ProcessInitializeOnLoadAttributes (101ms)
-			ProcessInitializeOnLoadMethodAttributes (61ms)
+			InitializePlatformSupportModulesInManaged (35ms)
+			BeforeProcessingInitializeOnLoad (86ms)
+			ProcessInitializeOnLoadAttributes (79ms)
+			ProcessInitializeOnLoadMethodAttributes (74ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-[Licensing::Module] Licensing is not yet initialized.
-[Licensing::Client] Error: HandshakeResponse reported an error:
-	ResponseCode: 505
-	ResponseStatus: Unsupported protocol version '1.18.1'.
-[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ilya"
-[Licensing::IpcConnector] LicenseClient-ilya channel disconnected successfully.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8" at "2026-06-12T13:11:06.9268511Z"
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 2440, path: "C:/Program Files/Unity/Hub/Editor/6000.4.8f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
-[Licensing::Module] LicensingClient has failed validation; ignoring
-[Licensing::Client] Handshaking with LicensingClient:
-  Version:                 1.18.1+9fbee8e
-  Session Id:              8645213671184c9798e1d1ccb357ea91
-  Correlation Id:          127a695c2c75f0c8603b0ea323bd99ec
-  External correlation Id: 145609846871369707
-  Machine Id:              80SYv2LEMI7j7lpo2mJgSo5HpMU=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ilya-6000.4.8" (connect: 0.00s, validation: 0.00s, handshake: 0.01s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ilya-6000.4.8-notifications" at "2026-06-12T13:11:06.9355003Z"
-[Licensing::Module] Licensing Background thread has ended after 1.61s
-[Licensing::Module] Licensing is initialized (took 0.03s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: 18966820669335-UnityPersXXXX
@@ -190,135 +190,61 @@ Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.
 Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory is not a mono symbol file
-Refreshing native plugins compatible for Editor in 2.10 ms, found 1 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Refreshing native plugins compatible for Editor in 2.44 ms, found 1 plugins.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.919 seconds
-Domain Reload Profiling: 1563ms
-	BeginReloadAssembly (158ms)
-		DisableScriptedObjects (3ms)
-		CreateAndSetChildDomain (31ms)
-	RebuildCommonClasses (25ms)
+- Finished resetting the current domain, in  1.269 seconds
+Domain Reload Profiling: 2192ms
+	BeginReloadAssembly (216ms)
+		DisableScriptedObjects (5ms)
+		CreateAndSetChildDomain (47ms)
+	RebuildCommonClasses (40ms)
 	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (66ms)
-	LoadAllAssembliesAndSetupDomain (385ms)
-		LoadAssemblies (254ms)
-		AnalyzeDomain (187ms)
-			TypeCache.Refresh (160ms)
-				TypeCache.ScanAssembly (148ms)
-			BuildScriptInfoCaches (24ms)
-	FinalizeReload (919ms)
+	initialDomainReloadingComplete (90ms)
+	LoadAllAssembliesAndSetupDomain (567ms)
+		LoadAssemblies (412ms)
+		AnalyzeDomain (261ms)
+			TypeCache.Refresh (222ms)
+				TypeCache.ScanAssembly (204ms)
+			BuildScriptInfoCaches (34ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (1269ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (121ms)
-			ProcessInitializeOnLoadAttributes (528ms)
-			ProcessInitializeOnLoadMethodAttributes (169ms)
-			AfterProcessingInitializeOnLoad (5ms)
-		AwakeInstancesAfterBackupRestoration (5ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+			BeforeProcessingInitializeOnLoad (163ms)
+			ProcessInitializeOnLoadAttributes (724ms)
+			ProcessInitializeOnLoadMethodAttributes (241ms)
+			AfterProcessingInitializeOnLoad (8ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
 Unloading 43 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4931 unused Assets / (16.4 MB). Loaded Objects now: 5550.
-Memory consumption went from 139.7 MB to 123.3 MB.
-Total: 15.648700 ms (FindLiveObjects: 0.623000 ms CreateObjectMapping: 0.449900 ms MarkObjects: 10.411800 ms  DeleteObjects: 4.160100 ms)
+Unloading 4938 unused Assets / (16.8 MB). Loaded Objects now: 5557.
+Memory consumption went from 137.8 MB to 121.1 MB.
+Total: 18.986100 ms (FindLiveObjects: 0.674500 ms CreateObjectMapping: 0.562500 ms MarkObjects: 12.341700 ms  DeleteObjects: 5.402900 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 93665.470361 seconds.
-  path: Assets/Scenes/SampleArena.unity
-  importAddress: Guid(e144abd3b6725ff43a626dfb46c00a33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scenes/SampleArena.unity using Guid(e144abd3b6725ff43a626dfb46c00a33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '2c7beba4c5da5da967427bdb946c4160') in 0.0583409 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3d70c8fb88f510a8c2c291cd3d9ca50d DependenciesID=97c5b2c53ec5945e62e5e7e14d87e7f8 StaticDependenciesID=99fe7dbf4b3e53b10e79f3f715118326 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Prefabs/PongBall.prefab
-  importAddress: Guid(37a416af21f0e9747bdecee82b2ec3a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/PongBall.prefab using Guid(37a416af21f0e9747bdecee82b2ec3a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
-Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
-Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
-UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
-UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
-UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
-UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
-UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
-
-[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
-
-SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
-Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
-Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
-UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
-UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
-UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
-UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
-UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
-
-[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
-
-SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
-Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
-Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
-UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
-UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
-UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
-UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
-UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
-
-[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
-
-SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
-Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
-Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
-UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
-UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
-UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
-UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
-UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
-
-[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
-
- -> (Import Result ID: 'bc7f6a33e5d5fa5d9e9d991b8e6c72d8') in 0.0648612 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=550c16fc10d8291edd5ec62d87eab2ed DependenciesID=ad0a3396789f70b79c1c5747968a5fd2 StaticDependenciesID=4c8558a8c497af3c5563007b38f2a5fa 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
-
-========================================================================
-Received Import Request.
-  Time since last request: 145.070217 seconds.
-  path: Assets/Scripts/UI/MainMenuController.cs
-  importAddress: Guid(c8569c49b5cbb354aa5541114a4f3391) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/MainMenuController.cs using Guid(c8569c49b5cbb354aa5541114a4f3391) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '2a06ab15e25ae75213bcd06faef362db') in 0.0008695 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b373a537f2f0cd20de85f8f19918322e DependenciesID=9fa269aea4064257b53fcc75c5600312 StaticDependenciesID=80b78d77397e301692f9f589493ec190 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 426.335560 seconds.
+  Time since last request: 97290.480712 seconds.
   path: Assets/Prefabs/Boss.prefab
-  importAddress: Guid(e14b74b7aa6a71349b5f0be9ebc24df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Boss.prefab using Guid(e14b74b7aa6a71349b5f0be9ebc24df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+  importAddress: Guid(e14b74b7aa6a71349b5f0be9ebc24df0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Boss.prefab using Guid(e14b74b7aa6a71349b5f0be9ebc24df0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -328,6 +254,11 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -337,6 +268,11 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -346,6 +282,11 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -355,6 +296,11 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -364,6 +310,11 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -373,6 +324,11 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
@@ -382,18 +338,388 @@ UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
 Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
 Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '5bbaee2eff865e996dc0352368c9e784') in 0.0695918 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=579b70fa12894c79a217ee50f3b83151 DependenciesID=06a749a1d54baa6fd721cec3f6896a82 StaticDependenciesID=8806e5aaad7afcb71e5e9973dda46bbf 
+ -> (Import Result ID: 'f3332fd2e65556510e9053a460f04fbb') in 0.1533348 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ba37d45e1143f399a571f577dcd7e79a DependenciesID=999f0dcce5687f8359562c177a7eee35 StaticDependenciesID=7a6b8f12acf69c43758522d9202d809b 
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 40
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.309797 seconds.
-  path: Assets/Prefabs/Coin.prefab
-  importAddress: Guid(16da74ffb572ed0429eed272a16a3757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Coin.prefab using Guid(16da74ffb572ed0429eed272a16a3757) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+  Time since last request: 0.000031 seconds.
+  path: Assets/Prefabs/Rocket.prefab
+  importAddress: Guid(2b3c4d5e6f708192a3b4c5d6e7f8a007) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Rocket.prefab using Guid(2b3c4d5e6f708192a3b4c5d6e7f8a007) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '7f842d4aff5eec237ff5365121209044') in 0.0215776 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c65956418ad9a396ea4e8c761d0df2e8 DependenciesID=74c4f901c84cd620baff10a96a358740 StaticDependenciesID=6c8907bda3aea2f7a30482c4ea666265 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 25
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Weapons/RocketLauncher.asset
+  importAddress: Guid(3c4d5e6f708192a3b4c5d6e7f8a9b002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Weapons/RocketLauncher.asset using Guid(3c4d5e6f708192a3b4c5d6e7f8a9b002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: 'aa115ec7d9fd9d9946c1bc4e8d094ff1') in 0.0284029 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ee8935aef83699281f95edf4be9c37b9 DependenciesID=525dcb36b4e03062caba7e72e50503e1 StaticDependenciesID=d37c2f80a98cfb0fe443b828b2f5cc71 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 33
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prefabs/PlayerBullet.prefab
+  importAddress: Guid(1dbe6c8783c83ce4eba15a21bfb795ce) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/PlayerBullet.prefab using Guid(1dbe6c8783c83ce4eba15a21bfb795ce) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<UnityEngine.GameObject> (string)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: 'db3e83d755a87a7111fe7fc147e61a62') in 0.0196275 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=252cf0a51000adc6d62c23cb9d6d4702 DependenciesID=0d1a21cae586d1ae5d23c1d88f3df31a StaticDependenciesID=aaaaaa4d1c93f4ed26e837bb3394a41f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Scripts/Enemies/HybridRusher.cs
+  importAddress: Guid(1a2b3c4d5e6f708192a3b4c5d6e7f003) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Enemies/HybridRusher.cs using Guid(1a2b3c4d5e6f708192a3b4c5d6e7f003) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ec8170ed51c2b82a2d0697c5a343e43a') in 0.0178691 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a63e5659042cc3971f5d420b58b0483f DependenciesID=70aa629c6e3cd9298c7c4fc3938ea8bd StaticDependenciesID=85b002795537b8d7fa343ae72be4f052 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Scripts/Core/SceneFlow.cs
+  importAddress: Guid(224a694e79334e845ae6047afa9cc133) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Core/SceneFlow.cs using Guid(224a694e79334e845ae6047afa9cc133) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bc55a20c36e90090e763fbb087b5efd1') in 0.016575 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=14b49085d6318d15deda9d3d84c561e1 DependenciesID=2e70531ab0bfea4e311fd3d45604bc56 StaticDependenciesID=4682b54e6ee11eaf84af2a8d30bd20a4 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/Scripts/UI/MainMenuController.cs
+  importAddress: Guid(c8569c49b5cbb354aa5541114a4f3391) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/UI/MainMenuController.cs using Guid(c8569c49b5cbb354aa5541114a4f3391) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7135edd4829dc6afa1712deabad60a94') in 0.0133027 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=69b99b096f62b9a96b1cad56cc6ca5aa DependenciesID=067c362a1c254b47dff012963e2ac8a9 StaticDependenciesID=c9ba5a91f917fd4028054c182e22bbab 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.2D.Sprite.Package.EditorTests.dll at Library/ScriptAssemblies/Unity.2D.Sprite.Package.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.AI.Assistant.Integrations.Sample.Editor.dll at Library/ScriptAssemblies/Unity.AI.Assistant.Integrations.Sample.Editor.dll not valid. Loading of assembly skipped.
+Assembly Unity.AppUI.Editor.Tests.dll at Library/ScriptAssemblies/Unity.AppUI.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.AppUI.Tests.dll at Library/ScriptAssemblies/Unity.AppUI.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Refreshing native plugins compatible for Editor in 3.48 ms, found 1 plugins.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.333 seconds
+Domain Reload Profiling: 2150ms
+	BeginReloadAssembly (230ms)
+		DisableScriptedObjects (4ms)
+		CreateAndSetChildDomain (84ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (97ms)
+	LoadAllAssembliesAndSetupDomain (435ms)
+		LoadAssemblies (356ms)
+		AnalyzeDomain (168ms)
+			TypeCache.Refresh (6ms)
+			BuildScriptInfoCaches (158ms)
+	FinalizeReload (1334ms)
+		SetupLoadedEditorAssemblies (0ms)
+			BeforeProcessingInitializeOnLoad (193ms)
+			ProcessInitializeOnLoadAttributes (506ms)
+			ProcessInitializeOnLoadMethodAttributes (474ms)
+			AfterProcessingInitializeOnLoad (7ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 3.12 ms, found 1 plugins.
+Unloading 43 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4936 unused Assets / (15.7 MB). Loaded Objects now: 5565.
+Memory consumption went from 138.7 MB to 123.0 MB.
+Total: 24.836800 ms (FindLiveObjects: 0.988700 ms CreateObjectMapping: 0.947000 ms MarkObjects: 15.925500 ms  DeleteObjects: 6.972500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 294.313604 seconds.
+  path: Assets/Weapons/Pistol.asset
+  importAddress: Guid(2f419bb276a95884f96ac8482eeefba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Weapons/Pistol.asset using Guid(2f419bb276a95884f96ac8482eeefba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
@@ -411,12 +737,208 @@ Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderV
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '7fab607e195e8ef8ab7c5e5b2c6ac025') in 0.0177803 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=05ac674bc0acdd8187f69fc53d82226b DependenciesID=c7127d0eca10500d8addd562f71ea8c5 StaticDependenciesID=ae76d1f81c956235683b575678ec55e0 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '82c2f6c27687c08e9ddb9eda4e7c2734') in 0.0183611 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=da9a81b2f09648be9dbe16e43942996b DependenciesID=04e836a45e2c08583a09d9b43072ef46 StaticDependenciesID=f5583db047229db23ffb36bae7d68047 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 34
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.061980 seconds.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Weapons/SMG.asset
+  importAddress: Guid(e3425fb0806631f4484df61e3fa96e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Weapons/SMG.asset using Guid(e3425fb0806631f4484df61e3fa96e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '5d5bf5f7bc9454f902e26672c49daaa2') in 0.0028539 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=534fa6a0dc9703893ef9001dd34e2db8 DependenciesID=59552dc7e13215786ca5dd5853129963 StaticDependenciesID=b26709e6de9389663ab9211d9f0713d2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 33
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Weapons/Railgun.asset
+  importAddress: Guid(3c4d5e6f708192a3b4c5d6e7f8a9b001) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Weapons/Railgun.asset using Guid(3c4d5e6f708192a3b4c5d6e7f8a9b001) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '9121934bde9e90b4acc4e969748ea61e') in 0.0024628 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f8dffe5a554e3fc2e2fa5c1123a07245 DependenciesID=ab47fb3db1ea1cb711ef1d00ec398b46 StaticDependenciesID=74f3871576e13a1f01c15e9475f2019c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 25
+
+========================================================================
+Received Import Request.
+  Time since last request: 49.731245 seconds.
   path: Assets/Prefabs/Enemy_Drone.prefab
   importAddress: Guid(43ef3204f6add834096c2982064c5408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Enemy_Drone.prefab using Guid(43ef3204f6add834096c2982064c5408) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
@@ -491,12 +1013,224 @@ Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderV
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: 'eb3fd02bf313d9282d3640b2ce458c23') in 0.016883 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6c33ed59106be8b5719f7f4f034d929b DependenciesID=20c879d8fc3137aa1ff36079ca3c36bb StaticDependenciesID=edf64c6bd6300bca2fcefc8f3faef770 
+ -> (Import Result ID: '11eeef3ba8a1f1a575f4acc17844ba65') in 0.0634157 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6c33ed59106be8b5719f7f4f034d929b DependenciesID=25983e135295d09775a2624c74100342 StaticDependenciesID=edf64c6bd6300bca2fcefc8f3faef770 
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 40
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.532354 seconds.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Prefabs/Enemy_Sniper.prefab
+  importAddress: Guid(2b3c4d5e6f708192a3b4c5d6e7f8a002) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Enemy_Sniper.prefab using Guid(2b3c4d5e6f708192a3b4c5d6e7f8a002) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '7cedca8d85fff330b55706aaf19864d3') in 0.0244331 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=02d6f53452ce794a23dc5c0cfe00715b DependenciesID=4eb47029812589d9a423a541ac59031d StaticDependenciesID=a025934465b0abd988c9e9379c6f8e8a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 44
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Prefabs/Nail.prefab
+  importAddress: Guid(72f9b2e78e639db42a4262aa862bf3cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Nail.prefab using Guid(72f9b2e78e639db42a4262aa862bf3cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: 'df5547e620d3072ddd380ca89ee38ed8') in 0.0220486 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fe89339a0805c0aa0404661cc1214c81 DependenciesID=9a232da7f9b8666d2738f91a57de31da StaticDependenciesID=b6da41334c38e696a847040c5bf59a1d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Prefabs/FX_Muzzle.prefab
+  importAddress: Guid(8d21aeb0666f63743a8730cf014a1502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/FX_Muzzle.prefab using Guid(8d21aeb0666f63743a8730cf014a1502) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: 'ab661588089445682677bb8faa202b90') in 0.0234672 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=24afc32cf6b8e796f785909fde472920 DependenciesID=fd9fd6277e3caa61829109944ed4f06f StaticDependenciesID=3ba709e30cb075ec722469880da3e751 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Prefabs/SniperBullet.prefab
+  importAddress: Guid(2b3c4d5e6f708192a3b4c5d6e7f8a006) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/SniperBullet.prefab using Guid(2b3c4d5e6f708192a3b4c5d6e7f8a006) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '54f8ee4a5f8d34cc081bc95e44cc37c0') in 0.0217799 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=888fdb1a9defd616135a5a45a431415c DependenciesID=e604cdba9d24b8b1d5a95233899b98ec StaticDependenciesID=aa0376827f7c7ae7aafa57a4404b16a7 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
   path: Assets/Prefabs/EnemyBullet.prefab
   importAddress: Guid(2c39d4e052668f0458c92615ed53f351) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/EnemyBullet.prefab using Guid(2c39d4e052668f0458c92615ed53f351) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
@@ -535,15 +1269,15 @@ Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderV
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: 'a2edecc563aebd81215bd1ab3e054d49') in 0.0166141 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=34167b53dad4271a34def4eb0e5db77c DependenciesID=eb90be2a31b56b62155dc950f2f1b61c StaticDependenciesID=fe9dc0e62cd4864325a68da697b45a77 
+ -> (Import Result ID: 'e483399cb4ac7ece032898bcac294ec7') in 0.0118153 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=34167b53dad4271a34def4eb0e5db77c DependenciesID=a8643259eb2689d15f225f7dbe010347 StaticDependenciesID=fe9dc0e62cd4864325a68da697b45a77 
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.198163 seconds.
-  path: Assets/Prefabs/FX_Death.prefab
-  importAddress: Guid(f6f22f10bb20791458423558086017d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/FX_Death.prefab using Guid(f6f22f10bb20791458423558086017d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+  Time since last request: 0.000020 seconds.
+  path: Assets/Prefabs/HealOrb.prefab
+  importAddress: Guid(73c0b37b8c96b094780e4ac9dfd3c38f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/HealOrb.prefab using Guid(73c0b37b8c96b094780e4ac9dfd3c38f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
@@ -561,15 +1295,15 @@ Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderV
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '318d99e5f8074dad0368c853547f2f67') in 0.017369 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9d5058a8521a8aea758c5b1593c88319 DependenciesID=ce662a1b3ea4c4ca83d5b68c5b4f7f60 StaticDependenciesID=1836310dd70cec59dcf51c6569fe820c 
+ -> (Import Result ID: '16754fd3ed60efbeaa18e0e1db5a112f') in 0.0209091 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=99202f36fd345f09e4dfa2f84ee8aa19 DependenciesID=95c43852b373f3a597528d1534ae844d StaticDependenciesID=54802d98df797589a051024d6eeda41f 
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.711256 seconds.
-  path: Assets/Prefabs/FX_Graze.prefab
-  importAddress: Guid(fc3642dc740968949b28c497423bca2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/FX_Graze.prefab using Guid(fc3642dc740968949b28c497423bca2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+  Time since last request: 32.164574 seconds.
+  path: Assets/Patterns/Pattern_Spiral.asset
+  importAddress: Guid(8ea60ec7615333445a109a15c0af8e72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Patterns/Pattern_Spiral.asset using Guid(8ea60ec7615333445a109a15c0af8e72) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
@@ -587,71 +1321,24 @@ Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderV
 
 [Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
- -> (Import Result ID: '8c12cf63fcb632cfc506536f0c81d5bf') in 0.0179624 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cdd1074966db6ed722ceab90c47affba DependenciesID=b0dc2e37f72de0a2cfbe437cb5862a03 StaticDependenciesID=d88073e574623c41e01671d9a4848504 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteRendererBoundsChanged)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
 
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
-Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
-Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
-Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
-Assembly Unity.2D.Sprite.Package.EditorTests.dll at Library/ScriptAssemblies/Unity.2D.Sprite.Package.EditorTests.dll not valid. Loading of assembly skipped.
-Assembly Unity.AI.Assistant.Integrations.Sample.Editor.dll at Library/ScriptAssemblies/Unity.AI.Assistant.Integrations.Sample.Editor.dll not valid. Loading of assembly skipped.
-Assembly Unity.AppUI.Editor.Tests.dll at Library/ScriptAssemblies/Unity.AppUI.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.AppUI.Tests.dll at Library/ScriptAssemblies/Unity.AppUI.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
-Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
-Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
-Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
-Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
-Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file LoadedFromMemory is not a mono symbol file
-Refreshing native plugins compatible for Editor in 2.24 ms, found 1 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.ai.assistant/Plugins/Shared/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.819 seconds
-Domain Reload Profiling: 1406ms
-	BeginReloadAssembly (178ms)
-		DisableScriptedObjects (3ms)
-		CreateAndSetChildDomain (69ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (60ms)
-	LoadAllAssembliesAndSetupDomain (314ms)
-		LoadAssemblies (238ms)
-		AnalyzeDomain (132ms)
-			TypeCache.Refresh (4ms)
-			BuildScriptInfoCaches (124ms)
-	FinalizeReload (819ms)
-		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (122ms)
-			ProcessInitializeOnLoadAttributes (284ms)
-			ProcessInitializeOnLoadMethodAttributes (297ms)
-			AfterProcessingInitializeOnLoad (9ms)
-		AwakeInstancesAfterBackupRestoration (7ms)
-Unloading 43 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4929 unused Assets / (16.4 MB). Loaded Objects now: 5565.
-Memory consumption went from 140.9 MB to 124.5 MB.
-Total: 18.015700 ms (FindLiveObjects: 0.804300 ms CreateObjectMapping: 0.597600 ms MarkObjects: 11.453700 ms  DeleteObjects: 5.157100 ms)
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
 
-Prepare: number of updated asset objects reloaded= 0
+SendMessage cannot be called during Awake, CheckConsistency, or OnValidate (Visual: OnSpriteTilingPropertyChange)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_sprite (UnityEngine.Sprite)
+Cybershi.PlaceholderVisual:Apply () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:38)
+Cybershi.PlaceholderVisual:OnValidate () (at Assets/Scripts/Visuals/PlaceholderVisual.cs:31)
+
+[Assets/Scripts/Visuals/PlaceholderVisual.cs line 38]
+
+ -> (Import Result ID: '3ac4c556b2a830d4b21dafe2aec2adad') in 0.002476 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=05e3dab2233b966d35dc2c1a9970d4a9 DependenciesID=7d19f0f042ef6cf4924c71648162304d StaticDependenciesID=7b1ba3886c6c90fca8a16c83cf1e5194 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 17
+

@@ -51,7 +51,13 @@ MonoBehaviour:
   knockback: 4
   gravityScale: 0.05
   orientToVelocity: 1
+  parryDamageMult: 10
+  parrySpeedMult: 1.6
+  parryHomingTurnSpeed: 540
+  parryableTint: {r: 0.4, g: 1, b: 1, a: 1}
+  parriedTint: {r: 1, g: 1, b: 0.5, a: 1}
   attractable: 0
+  attractTurnSpeed: 480
   explodeOnImpact: 1
   explosionRadius: 3.5
   explosionDamageFactor: 0.8
